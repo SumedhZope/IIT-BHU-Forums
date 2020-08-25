@@ -6,4 +6,3 @@ Team :
 2. Palash Motwani
 3. Prakhar Goyal
 4. Sumedh Zope
-5. Yash Goyal
