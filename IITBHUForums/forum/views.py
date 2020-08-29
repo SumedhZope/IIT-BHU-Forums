@@ -2,18 +2,18 @@ from django.shortcuts import render,redirect
 from .forms import CreateNewUserForm
 from django.contrib.auth import authenticate,login
 
-def loginpage(request,*args,**kwargs):
+def loginpage(request, *args, **kwargs):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request,username=username,password=password)
+        user = authenticate(request, username=username,password=password)
         if user is not None:
-            login(request,user)
+            login(request, user)
             return redirect('/')
         else:
             print("Error")
-            return render(request,'login.html')
-    return render(request,'login.html')
+            return render(request, 'login.html')
+    return render(request, 'login.html')
                 
 
 
@@ -26,6 +26,6 @@ def register(request,*args,**kwargs):
             return redirect('/')
         else:
             print("Error")
-            return render(request,'register.html',{'form' : form})
-    return render(request,'register.html',{'form' : form})
+            return render(request, 'register.html',{'form' : form})
+    return render(request, 'register.html',{'form' : form})
 
