@@ -29,3 +29,5 @@ def register(request,*args,**kwargs):
             return render(request, 'register.html',{'form' : form})
     return render(request, 'register.html',{'form' : form})
 
+def home(request, *args, **kwargs):
+    return render(request,'home.html',{'user' : request.user})
