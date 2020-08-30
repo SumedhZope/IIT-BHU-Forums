@@ -8,7 +8,7 @@ def loginpage(request, *args, **kwargs):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, username=username,password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('/')
@@ -18,7 +18,7 @@ def loginpage(request, *args, **kwargs):
     return render(request, 'login.html')
 
 
-def register(request,*args,**kwargs):
+def register(request, *args, **kwargs):
     if(request.user.is_authenticated) :
         return redirect('/')
     form = CreateNewUserForm()
@@ -28,10 +28,10 @@ def register(request,*args,**kwargs):
             form.save()
             username = request.POST.get('username')
             password = request.POST.get('password1')
-            user = authenticate(request, username=username,password=password)
+            user = authenticate(request, username=username, password=password)
             login(request, user)
             return redirect('/')
         else:
             print("Error")
-            return render(request, 'register.html',{'form' : form})
-    return render(request, 'register.html',{'form' : form})
+            return render(request, 'register.html', {'form' : form})
+    return render(request, 'register.html', {'form' : form})
