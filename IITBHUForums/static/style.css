@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #5b6577;
+    align-items: center;
+}
+
+.navbar input{
+    height: 40px;
+    width: 350px;
+    border-width: 0;
+    border-radius: 25px;
+}
+
+.profile-picture{
+    margin-right: 10px;
+}
+
+.navbar .ul-1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 5%;
+}
+
+.navbar .ul-2{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 5%;
+}
+
+.navbar .ul-1 li{
+    margin-left: 40px;
+    display: inline-block;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+.logo {
+    margin: 0;
+    width: 70px;
+    height: 50px;
+}
