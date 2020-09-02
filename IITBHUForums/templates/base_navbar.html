@@ -4,21 +4,40 @@
 <html>
     <head>
         <link rel="stylesheet" href={% static 'style.css' %} />
+        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     </head>
     <body>
     <div class="navbar">
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
         <ul class = "ul-1">   
-            <li><img class =logo src="{% static 'logo.png' %}">
-            <li><img src="{% static 'home.png' %}">
-            <li><img src="{% static 'events.png' %}">
-            <li><img src="{% static 'groups.png' %}">
-            <li><img src="{% static 'chat.png' %}">
+            <li><img class =logo src="{% static 'img/IIT BHU Forums.png' %}">
+            <li><img src="{% static 'img/home.png' %}">
+            <li><img src="{% static 'img/events.png' %}">
+            <li><img src="{% static 'img/groups.png' %}">
+            <li><img src="{% static 'img/chat.png' %}">
         </ul>
-        <input>
+        <div class="fake-image">
+            <input placeholder="Search">
+            <img class="search-image" src="{% static 'img/search.png'%}">
+        </div>
         <ul class="ul-2">
-            <li><img class = "profile-picture" src="{% static 'dpp.jpg'%}">
-            <li>{{request.user}}
+            <li><img class = "profile-picture" src="{% static 'img/dpp.jpg'%}">
+            <li class="user">{{request.user}}
+            <li class = "triangle">
         </ul>
+        <div class="dropdown">
+            <ul>
+                <li> Profile
+                <li> Dark mode  
+                <li> Logout
+            </ul>
+        </div>
     </div>
     </body>
+    <script src="{% static 'js/navbar.js'%}"></script>
 </html>
