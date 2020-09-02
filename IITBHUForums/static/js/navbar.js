@@ -8,21 +8,28 @@ const navSlide = () => {
     })
 
 
-    console.log("run");
 }
 
 const dropdownUser = () =>{
     const triangle = document.querySelector('.triangle');
     const user = document.querySelector('.user');
+    const profile_picture = document.querySelector('.profile-picture');
     const dropdown = document.querySelector('.dropdown')
     triangle.addEventListener('click',() => {
         dropdown.classList.toggle('dropdown-active');
         triangle.classList.toggle('triangle-active');
-    })
+        profile_picture.classList.toggle('profile-picture-active');
+    });
     user.addEventListener('click',() => {
         dropdown.classList.toggle('dropdown-active');
         triangle.classList.toggle('triangle-active');
-    })
+        profile_picture.classList.toggle('profile-picture-active');
+    });
+    profile_picture.addEventListener('click',()=> {
+        dropdown.classList.toggle('dropdown-active');
+        triangle.classList.toggle('triangle-active');
+        profile_picture.classList.toggle('profile-picture-active');
+    });
 }
 
 const process = () =>{

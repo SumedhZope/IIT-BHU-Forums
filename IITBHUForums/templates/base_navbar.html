@@ -15,15 +15,17 @@
             <div class="line3"></div>
         </div>
         <ul class = "ul-1">   
-            <li><img class=logo src="{% static 'img/IIT BHU Forums.png' %}">
+            <li><img class =logo src="{% static 'img/IIT BHU Forums.png' %}">
             <li><img src="{% static 'img/home.png' %}">
             <li><img src="{% static 'img/events.png' %}">
             <li><img src="{% static 'img/groups.png' %}">
             <li><img src="{% static 'img/chat.png' %}">
         </ul>
         <div class="fake-image">
-            <input placeholder="Search">
-            <img class="search-image" src="{% static 'img/search.png'%}">
+            <div class="search">
+                <input type="text" style="background-color: #abc0e4;" placeholder="Search">
+                <img class="search-image" style="background-color: #abc0e4;" src="{% static 'img/search.png'%}">
+            </div>
         </div>
         <ul class="ul-2">
             <li><img class = "profile-picture" src="{% static 'img/dpp.jpg'%}">
@@ -32,7 +34,7 @@
         </ul>
         <div class="dropdown">
             <ul>
-                <li> Profile
+                <li class=""> Profile
                 <li> Dark mode  
                 <li> Logout
             </ul>
