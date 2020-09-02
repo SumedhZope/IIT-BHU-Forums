@@ -13,10 +13,15 @@ const navSlide = () => {
 
 const dropdownUser = () =>{
     const triangle = document.querySelector('.triangle');
+    const user = document.querySelector('.user');
     const dropdown = document.querySelector('.dropdown')
     triangle.addEventListener('click',() => {
         dropdown.classList.toggle('dropdown-active');
-        triangle.classList.toggle('triangle-active')
+        triangle.classList.toggle('triangle-active');
+    })
+    user.addEventListener('click',() => {
+        dropdown.classList.toggle('dropdown-active');
+        triangle.classList.toggle('triangle-active');
     })
 }
 

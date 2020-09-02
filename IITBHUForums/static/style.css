@@ -150,6 +150,10 @@ img {
     height: 32px;
 }
 
+.user{
+    cursor: pointer;
+}
+
 @media (max-width:768px){
     body{
         overflow-y: hidden;
