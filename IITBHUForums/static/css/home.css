@@ -1,0 +1,108 @@
+body{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    background-color:#5b6577 !important;
+    box-sizing: border-box;
+}
+
+.logo{
+    max-height:100px;
+}
+
+.sign_in_btn{
+    color:white;
+    background-color:#c68585;
+    height:90px;
+    width:220px;
+    border-radius:10px !important;
+    font-size:30px !important;
+}
+.sign_up_btn{
+    color:white;
+    background-color:#c68585;
+    height:90px;
+    width:220px;
+    border-radius:10px !important;
+    font-size:30px !important;
+}
+
+.loading_img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+}
+
+.content{
+    display:flex;
+    width:100%;
+}
+
+.content_child{
+    width:50%;
+}
+
+.heading{
+    color:white;
+    font-size:40px;
+}
+
+.text{
+    color:white;
+    font-size:30px;
+}
+
+@media only screen and (max-width: 1415px) {
+    .loading_img{
+        margin-top: 30px;
+        width:90%;
+    }
+    .logo {
+        max-height:100px;
+    }
+    .content{
+        display:flex;
+    }
+    .content_child{
+        width:50%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .loading_img{
+        width:80%;
+    }
+    .content{
+        display:block;
+    }
+    .content_child{
+        width:100%;
+    }
+    .heading{
+        color:white;
+        font-size:30px;
+    }
+    .text{
+        color:white;
+        font-size:20px;
+    }
+}
+
+@media only screen and (max-width: 565px) {
+    .logo {
+        max-width:100%;
+    }
+    .sign_in_btn{
+        height:70px;
+        width:80%;
+        font-size:20px !important;
+    }
+    .sign_up_btn{
+        height:70px;
+        width:60%;
+        font-size:25px !important;
+    }
+}
