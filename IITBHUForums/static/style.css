@@ -24,6 +24,8 @@ body{
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .navbar input{
@@ -34,10 +36,6 @@ body{
     border-top-left-radius: 5px;
     outline: none;
     font-size: x-large;
-}
-
-.profile-picture{
-    margin-right: 10px;
 }
 
 .navbar .ul-1{

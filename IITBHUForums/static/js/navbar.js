@@ -45,8 +45,9 @@ window.onclick = function(event){
     const triangle = document.querySelector('.triangle');
     const dropdown = document.querySelector('.dropdown');
     const dropdown_main_div = document.querySelector('.ul-2');
-    console.log(event.target.parentNode);
-    if(event.target != dropdown && event.target.parentNode != dropdown && event.target != dropdown_main_div && event.target.parentNode != dropdown_main_div){
+    const profile_picture = document.querySelector('.profile-picture');
+
+    if(event.target != dropdown && event.target.parentNode != dropdown && event.target != dropdown_main_div && event.target.parentNode != dropdown_main_div && event.target != profile_picture){
         triangle.classList.remove('triangle-active');
         dropdown.classList.remove('dropdown-active');
     }
