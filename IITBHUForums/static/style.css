@@ -165,7 +165,7 @@ img {
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
     }
-    .search:hover{
+    .search-active{
         width: 100% !important;
     }
 }
@@ -227,7 +227,7 @@ img {
 }
 
 
-@media (max-width:400px){
+@media (max-width:1000px){
     .user{
         display: none !important;
     }

@@ -32,9 +32,19 @@ const dropdownUser = () =>{
     });
 }
 
+const searchbar = () => {
+    const search = document.querySelector('.search');
+    const searchimage = document.querySelector('.search-image');
+    searchimage.addEventListener('click',() => {
+        search.classList.toggle('search-active');
+    });
+
+}
+
 const process = () =>{
     navSlide();
     dropdownUser();
+    searchbar();
 }
 
 process();
