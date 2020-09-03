@@ -10,3 +10,5 @@ function resposive(){
     h /= 2;
     $('.front').css({'padding-top':h+'px'});
 }
+
+

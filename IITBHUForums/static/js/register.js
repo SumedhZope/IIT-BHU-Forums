@@ -1,3 +1,8 @@
 function hideRegister(){
-    $("#staticBackdrop").modal('hide');
+    $("#Register").modal('hide');
+}
+
+function showLogin(){
+    $("#Register").modal('hide'); 
+    $("#LogIn").modal('show');
 }

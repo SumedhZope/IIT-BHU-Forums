@@ -1,88 +1,55 @@
 {% load static %}
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'style/register.css' %}" />
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="{% static 'js/home.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <link href="../static/style.css" rel="stylesheet">
-    <script src="{%static 'js/register.js'%}"></script>
-</head>
-
-<body>
-    <button type="button" class="sign btn btn-primary mt-4 mr-5" data-toggle="modal"
-        data-target="#staticBackdrop">Register</button>
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" id="modalCenter">
-            <div class="modal-content" id="finalBox">
-                <div class="modal-body" id="finalBody" >
-                    <div class="close-button" onclick="hideRegister()"><img src="{% static 'img/close.png' %}"
-                            width="36px" height="36px"></div>
-                    <form method="POST" class="register-form">
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <div class="container">
-                            <div class="row">
-                                <div class="right col-sm" >
-                                    Username<span style="color: red;"> *</span> :
-                                </div>
-                                <div class="input-center col-sm">
-                                    <input type="text" name="Username" class="input-tabs">
-                                </div>
+<!-- Modal -->
+<div class="modal fade" id="Register" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="modalCenter">
+        <div class="modal-content" id="finalBox">
+            <div class="modal-body" id="finalBody" >
+                <div class="close-button" onclick="hideRegister()"><img src="{% static 'img/close.png' %}"
+                        width="36px" height="36px"></div>
+                <form method="POST" class="register-form">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="right col-sm" >
+                                Username<span style="color: red;"> *</span> :
                             </div>
-                            <div class="row">
-                                <div class="right col-sm">
-                                    Email<span style="color: red;"> *</span> :
-                                </div>
-                                <div class="input-center col-sm">
-                                    <input type="email" name="email" class="input-tabs">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="right col-sm">
-                                    Password<span style="color: red;"> *</span> :
-                                </div>
-                                <div class="input-center col-sm">
-                                    <input type="password" name="password" class="input-tabs">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="right col-sm">
-                                    Confirm password<span style="color: red;"> *</span> :
-                                </div>
-                                <div class="input-center col-sm">
-                                    <input type="password" name="cPassword" class="input-tabs">
-                                </div>
+                            <div class="input-center col-sm">
+                                <input type="text" name="Username" class="input-tabs">
                             </div>
                         </div>
-                        <div style="text-align: center; margin-top: 20px;">
-                        <button type="button" class="btn RegisterButton">Register</button>
+                        <div class="row">
+                            <div class="right col-sm">
+                                Email<span style="color: red;"> *</span> :
+                            </div>
+                            <div class="input-center col-sm">
+                                <input type="email" name="email" class="input-tabs">
+                            </div>
                         </div>
-                    </form>
-                    <div class="lastInModel">
-                        <p onclick="">Alredy a member? click to sing in</p>
+                        <div class="row">
+                            <div class="right col-sm">
+                                Password<span style="color: red;"> *</span> :
+                            </div>
+                            <div class="input-center col-sm">
+                                <input type="password" name="password" class="input-tabs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="right col-sm">
+                                Confirm password<span style="color: red;"> *</span> :
+                            </div>
+                            <div class="input-center col-sm">
+                                <input type="password" name="cPassword" class="input-tabs">
+                            </div>
+                        </div>
                     </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                    <button type="button" class="btn RegisterButton">Register</button>
+                    </div>
+                </form>
+                <div class="lastInModel d-flex justify-content-center">
+                    <p onclick="showLogin()" style="cursor: pointer;">Alredy a member? click to sing in</div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-</body>
-
-</html>
+</div>
