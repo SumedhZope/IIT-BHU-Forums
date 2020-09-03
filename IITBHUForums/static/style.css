@@ -204,6 +204,7 @@ img {
         display: block;
         flex-direction: column;
         cursor: pointer;
+        margin-left: 15px;
     }
 
     .nav-active{
