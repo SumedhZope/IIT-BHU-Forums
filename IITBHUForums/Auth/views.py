@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from .forms import CreateNewUserForm
 from django.contrib.auth import authenticate,login
 
+
+def profile(request, *args, **kwargs):
+    return render(request, 'profile.html', {'user' : request.user})
 def loginpage(request, *args, **kwargs):
     if(request.user.is_authenticated):
         return redirect('/')
