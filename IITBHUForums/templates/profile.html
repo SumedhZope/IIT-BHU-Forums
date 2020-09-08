@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="{% static 'img/favicon.ico' %}">    
+        <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="{% static 'js/profile.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+        <title>Profile page</title>
+        <link rel="stylesheet" href={% static 'css/profile.css' %} />
+        
+    </head>
+    <body>
+        <!--div style ="display: flex;">
+            <div class ="col-6 credits"><h3>Credits</h3></div>
+            <div class ="col-6 "><p align ="right"> <input class="btn btn-primary editprofilebutton" type="submit" value="Edit Profile"></p></div>
+        </div-->
+        <div class="ProfileBackGround"><center><img class="Profile_pic" src="{% static 'img/dpp.jpg' %}" width="150" alt="Default Profile Picture"></center>
+        </div>
+        <hr class="dotted">
+        <p align ="center">@Username</p>
+        <hr class="dotted">
+        <p align ="center"><b>Test Name</b></p>
+        <hr class="dotted">
+        <p align ="center">Add bio !!!</p>
+        <p align ="center">Add bio !!!</p>
+        <hr class="dotted">
+        <!-- Tab links -->
+        <div class="tab d-flex " >
+            <button class="tablinks b1" onclick="openTab(event, 'Groups')"><img src="{% static 'img/groups.png' %}" style="height: 35px ;" alt="group's icon"></button>
+            <button class="tablinks b1" onclick="openTab(event, 'Posts')"><img src="{% static 'img/post.png' %}" style="height: 35px ;" alt="My post's icon"></button>
+            <button class="tablinks b2" onclick="openTab(event, 'EditPost')"><img src="{% static 'img/editProfile.png' %}" style="height: 35px ;" alt="create post's icon"></button>
+            <button class="tablinks b2" onclick="openTab(event, 'Credit')"><img src="{% static 'img/credits.png' %}" style="height: 35px ;" alt="credits icon"></button>
+        </div>
+        
+        <!-- Tab content -->
+        <div id="Groups" class="tabcontent">
+            <h3>Groups</h3>
+        </div>
+        
+        <div id="Posts" class="tabcontent">
+            <h3>Posts</h3>
+        </div>
+        <div id="EditPost" class="tabcontent">
+            <h3>Edit/CreatPost</h3>
+        </div>
+        <div id="Credit" class="tabcontent">
+            <h3>Credits</h3>
+        </div>
+    </body>
+</html>
