@@ -10,7 +10,7 @@ body{
 }
 
 .logo{
-    max-height:100px;
+    max-height:90px;
 }
 
 .sign_in_btn{
@@ -28,6 +28,7 @@ body{
     width:220px;
     border-radius:10px !important;
     font-size:30px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .loading_img{
@@ -40,6 +41,7 @@ body{
 .content{
     display:flex;
     width:100%;
+    font-family: 'Comfortaa', cursive;
 }
 
 .content_child{
@@ -53,22 +55,38 @@ body{
 
 .text{
     color:white;
-    font-size:30px;
+    font-size:25px;
 }
 
 @media only screen and (max-width: 1415px) {
+    .sign_in_btn{
+        height:80px;
+        width:200px;
+        font-size:30px !important;
+    }
+    .sign_up_btn{
+        height:80px;
+        width:200px;
+        font-size:30px !important;
+    }
     .loading_img{
         margin-top: 30px;
-        width:90%;
+        width:73%;
     }
     .logo {
-        max-height:100px;
+        max-height:80px;
     }
     .content{
         display:flex;
     }
     .content_child{
         width:50%;
+    }
+    .heading{
+        font-size:30px;
+    }
+    .text{
+        font-size:20px;
     }
 }
 @media only screen and (max-width: 800px) {
@@ -82,12 +100,13 @@ body{
         width:100%;
     }
     .heading{
-        color:white;
-        font-size:30px;
+        font-size:25px;
     }
     .text{
-        color:white;
-        font-size:20px;
+        font-size:18px;
+    }
+    .sign_up_btn{
+        margin-top: 40px !important;
     }
 }
 
@@ -101,8 +120,9 @@ body{
         font-size:20px !important;
     }
     .sign_up_btn{
+        margin-top: 40px !important;
         height:70px;
-        width:60%;
+        width:50%;
         font-size:25px !important;
     }
 }
