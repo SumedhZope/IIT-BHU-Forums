@@ -1,0 +1,115 @@
+*{
+    outline: none;
+}
+#finalBody{
+    width: 100%;
+}
+.right {
+    text-align: right;
+    color: white;
+    font-family: 'Coming Soon', cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+}
+.row{
+    margin: 10px 0px 30px 0px;
+}
+.close-button-login{
+    cursor: pointer;
+    height: 38px;
+    width: 38px;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 50%;
+    border-style: solid;
+    background-color: #C2D6C7;
+    position:  absolute;
+    right: -19px;
+    top: -19px;
+    padding-top: 2px;
+}
+.close-button-login img{
+    display: block;
+    margin:auto;
+}
+#modalCenter{
+    outline: none !important;
+    /*width: 100%;*/
+    margin: auto;
+}
+#finalBoxLogin{
+    margin: 10px 10px 0 0; 
+    border-radius: 10px;
+    background: #C2D6C7;
+}
+.input-tabs-login{
+    background: #949494;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    height: 30px;
+    width: 100%;
+    outline: none;
+    padding: 0px 10px 0px 10px;
+    color: #F2FFEB;
+    font-family: Coming Soon;
+    font-style: normal;
+    font-weight: normal;
+}  
+.lastInModel{
+    text-align: center;
+    margin-top: 25px;
+}
+.RegisterButtonLogin{
+    color: white;
+    background-color: #9CACA5;
+    font-family: Coming Soon;
+    font-style: normal;
+    font-weight: medium;
+}
+@media only screen and (max-width: 1440px ){
+    #modalCenter{
+        margin: auto;
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 980px ){
+    #modalCenter{
+        margin: auto;
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 576px){
+    #modalCenter{
+        margin: auto;
+        width: 55%;
+    }
+    .right{
+        text-align: left;
+        font-size: 12px;
+    }
+    .input-center{
+        margin-left: auto;
+    }
+    .row{
+        margin-bottom: 20px;
+    }
+}
+@media only screen and (max-width: 478px ){
+    #modalCenter{
+        margin: auto;
+        width: 70%;
+    }
+    .row{
+        margin-bottom: 15px;
+    }
+}
+@media only screen and (max-width: 400px ){
+    #modalCenter{
+        margin: auto;
+        width: 75%;
+    }
+    .row{
+        margin-bottom: 12px;
+    }
+}

@@ -1,0 +1,128 @@
+body{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    background-color:#5b6577 !important;
+    box-sizing: border-box;
+}
+
+.logo{
+    max-height:90px;
+}
+
+.sign_in_btn{
+    color:white;
+    background-color:#c68585;
+    height:90px;
+    width:220px;
+    border-radius:10px !important;
+    font-size:30px !important;
+}
+.sign_up_btn{
+    color:white;
+    background-color:#c68585;
+    height:90px;
+    width:220px;
+    border-radius:10px !important;
+    font-size:30px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loading_img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+}
+
+.content{
+    display:flex;
+    width:100%;
+    font-family: 'Comfortaa', cursive;
+}
+
+.content_child{
+    width:50%;
+}
+
+.heading{
+    color:white;
+    font-size:40px;
+}
+
+.text{
+    color:white;
+    font-size:25px;
+}
+
+@media only screen and (max-width: 1415px) {
+    .sign_in_btn{
+        height:80px;
+        width:200px;
+        font-size:30px !important;
+    }
+    .sign_up_btn{
+        height:80px;
+        width:200px;
+        font-size:30px !important;
+    }
+    .loading_img{
+        margin-top: 30px;
+        width:73%;
+    }
+    .logo {
+        max-height:80px;
+    }
+    .content{
+        display:flex;
+    }
+    .content_child{
+        width:50%;
+    }
+    .heading{
+        font-size:30px;
+    }
+    .text{
+        font-size:20px;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .loading_img{
+        width:80%;
+    }
+    .content{
+        display:block;
+    }
+    .content_child{
+        width:100%;
+    }
+    .heading{
+        font-size:25px;
+    }
+    .text{
+        font-size:18px;
+    }
+    .sign_up_btn{
+        margin-top: 40px !important;
+    }
+}
+
+@media only screen and (max-width: 565px) {
+    .logo {
+        max-width:100%;
+    }
+    .sign_in_btn{
+        height:70px;
+        width:80%;
+        font-size:20px !important;
+    }
+    .sign_up_btn{
+        margin-top: 40px !important;
+        height:70px;
+        width:50%;
+        font-size:25px !important;
+    }
+}

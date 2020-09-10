@@ -1,15 +1,55 @@
 {% load static %}
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href={% static 'style.css' %} />
-    </head>
-    <body>
-        <form method="POST">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="save">Register</button>
-        </form>
-    </body>
-</html>
+<!-- Modal -->
+<div class="modal fade" id="Register" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="modalCenter">
+        <div class="modal-content" id="finalBox">
+            <div class="modal-body" id="finalBody" >
+                <div class="close-button" onclick="hideRegister()"><img src="{% static 'img/close.png' %}"
+                        width="36px" height="36px"></div>
+                <form method="POST" class="register-form">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="right col-sm" >
+                                Username<span style="color: red;"> *</span> :
+                            </div>
+                            <div class="input-center col-sm">
+                                <input type="text" name="Username" class="input-tabs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="right col-sm">
+                                Email<span style="color: red;"> *</span> :
+                            </div>
+                            <div class="input-center col-sm">
+                                <input type="email" name="email" class="input-tabs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="right col-sm">
+                                Password<span style="color: red;"> *</span> :
+                            </div>
+                            <div class="input-center col-sm">
+                                <input type="password" name="password" class="input-tabs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="right col-sm">
+                                Confirm password<span style="color: red;"> *</span> :
+                            </div>
+                            <div class="input-center col-sm">
+                                <input type="password" name="cPassword" class="input-tabs">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                    <button type="button" class="btn RegisterButton">Register</button>
+                    </div>
+                </form>
+                <div class="lastInModel d-flex justify-content-center">
+                    <p onclick="showLogin()" style="cursor: pointer;">Already a member? click to sign in</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
