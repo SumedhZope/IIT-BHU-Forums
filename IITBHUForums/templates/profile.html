@@ -1,4 +1,6 @@
 {% load static %}
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,12 +19,11 @@
         
     </head>
     <body>
-        <!--div style ="display: flex;">
+        <div style ="display: flex;">
             <div class ="col-6 credits"><h3>Credits</h3></div>
             <div class ="col-6 "><p align ="right"> <input class="btn btn-primary editprofilebutton" type="submit" value="Edit Profile"></p></div>
-        </div-->
-        <div class="ProfileBackGround"><center><img class="Profile_pic" src="{% static 'img/dpp.jpg' %}" width="150" alt="Default Profile Picture"></center>
         </div>
+        <center><img class="Profile_pic" src="{% static 'img/circle-cropped.png' %}" width="150" alt="Default Profile Picture"></center>
         <hr class="dotted">
         <p align ="center">@Username</p>
         <hr class="dotted">
@@ -33,10 +34,8 @@
         <hr class="dotted">
         <!-- Tab links -->
         <div class="tab d-flex " >
-            <button class="tablinks b1" onclick="openTab(event, 'Groups')"><img src="{% static 'img/groups.png' %}" style="height: 35px ;" alt="group's icon"></button>
-            <button class="tablinks b1" onclick="openTab(event, 'Posts')"><img src="{% static 'img/post.png' %}" style="height: 35px ;" alt="My post's icon"></button>
-            <button class="tablinks b2" onclick="openTab(event, 'EditPost')"><img src="{% static 'img/editProfile.png' %}" style="height: 35px ;" alt="create post's icon"></button>
-            <button class="tablinks b2" onclick="openTab(event, 'Credit')"><img src="{% static 'img/credits.png' %}" style="height: 35px ;" alt="credits icon"></button>
+            <button class="tablinks b1" onclick="openTab(event, 'Groups')"><b>Groups</b><img src="{% static 'img/groups.png' %}" style="height: 35px ;" alt="group's icon"></button>
+            <button class="tablinks b2" onclick="openTab(event, 'Posts')"><b>Posts</b><img src="{% static 'img/images.png' %}" style="height: 35px ;" alt="create post's icon"></button>
         </div>
         
         <!-- Tab content -->
@@ -46,12 +45,6 @@
         
         <div id="Posts" class="tabcontent">
             <h3>Posts</h3>
-        </div>
-        <div id="EditPost" class="tabcontent">
-            <h3>Edit/CreatPost</h3>
-        </div>
-        <div id="Credit" class="tabcontent">
-            <h3>Credits</h3>
         </div>
     </body>
 </html>
