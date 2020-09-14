@@ -1,6 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,reverse
+from django.http import HttpResponse
 from .forms import CreateNewUserForm
-from django.contrib.auth import authenticate,login
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
 
 #def loginpage(request, *args, **kwargs):
 #    if(request.user.is_authenticated):
@@ -37,5 +39,26 @@ from django.contrib.auth import authenticate,login
 #    return render(request, 'register.html', {'form' : form})
 
 def landingpage(request,*args,**kwargs):
-    return render(request, 'home.html', {})
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+
+        print(username,email,password1,password2)
+        if password2 == password1:
+            user = User.objects.create_user(username,email,password1)
+            user = authenticate(request, username=username, password=password1)
+            login(request,user)
+            print(user)
+        return HttpResponse('')
+    else:
+        return render(request, 'home.html')
+
+def logout_func(request, *args, **kwargs):
+    logout(request)
+    return redirect(reverse('homepage'))
+
+
+
 

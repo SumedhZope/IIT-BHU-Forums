@@ -18,6 +18,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <header>
         <div class="d-flex header m-0">
@@ -43,7 +44,7 @@
                 <div class="content_child m-0 d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-center">
-                            <button class="sign_up_btn btn"  data-toggle="modal"
+                            <button class="sign_up_btn btn" data-toggle="modal"
                                 data-target="#Register"><b>Sign Up</b></button>
                         </div>
                         <div class="text-center heading mt-3">Join our community</div>
@@ -56,4 +57,23 @@
             </div>
         </div>
     </body>
+    <script type="text/javascript">
+        $(document).on('submit','#register-form-id', function(e){
+            e.preventDefault();
+            $.ajax({
+                type : 'POST',
+                url : '/',
+                data : {
+                    username : $('#username').val(),
+                    email : $('#email').val(),
+                    password1 : $('#password1').val(),
+                    password2 : $('#password2').val(),
+                    csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success:function(){
+                    window.location.href = "testnav/"
+                }
+            });
+        });
+    </script>
 </html>
