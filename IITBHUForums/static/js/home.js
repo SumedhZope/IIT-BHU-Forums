@@ -12,3 +12,20 @@ function resposive(){
 }
 
 
+$(document).on('submit','#register-form-id', function(e){
+    e.preventDefault();
+    $.ajax({
+        type : 'POST',
+        url : '/',
+        data : {
+            username : $('#username').val(),
+            email : $('#email').val(),
+            password1 : $('#password1').val(),
+            password2 : $('#password2').val(),
+            csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+        },
+        success:function(){
+            window.location.href = "testnav/"
+        }
+    });
+});
