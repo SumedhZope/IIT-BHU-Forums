@@ -7,7 +7,7 @@
             <div class="modal-body" id="finalBody" >
                 <div class="close-button-login" onclick="hideLogin()"><img src="{% static 'img/close.png' %}"
                         width="36px" height="36px"></div>
-                <form method="POST" class="register-form">
+                <form class="register-form" id="login-form-id">
                     {% csrf_token %}
                     <div class="container">
                         <div class="row">
@@ -15,7 +15,7 @@
                                 Username<span style="color: red;"> *</span> :
                             </div>
                             <div class="input-center col-sm">
-                                <input type="text" name="Username" class="input-tabs-login">
+                                <input type="text" name="Username" id="username-signin" class="input-tabs-login">
                             </div>
                         </div>
                         
@@ -24,12 +24,12 @@
                                 Password<span style="color: red;"> *</span> :
                             </div>
                             <div class="input-center col-sm">
-                                <input type="password" name="password" class="input-tabs-login">
+                                <input type="password" name="password" id="password" class="input-tabs-login">
                             </div>
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 20px;">
-                    <button type="submit" class="btn RegisterButtonLogin">Log in</button>
+                    <button type="submit" class="btn RegisterButtonLogin" value="login">Log in</button>
                     </div>
                 </form>
                 <div class="lastInModel">

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
 from .forms import CreateNewUserForm
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 
@@ -40,18 +41,28 @@ from django.contrib.auth import authenticate,login,logout
 
 def landingpage(request,*args,**kwargs):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
+        if request.POST['btn'] == 'register':
+            username = request.POST['username_signup']
+            email = request.POST['email']
+            password1 = request.POST['password1']
+            password2 = request.POST['password2']
 
-        print(username,email,password1,password2)
-        if password2 == password1:
-            user = User.objects.create_user(username,email,password1)
-            user = authenticate(request, username=username, password=password1)
-            login(request,user)
-            print(user)
-        return HttpResponse('')
+            print(username,email,password1,password2)
+            if password2 == password1:
+                user = User.objects.create_user(username,email,password1)
+                user = authenticate(request, username=username, password=password1)
+                login(request,user)
+            return HttpResponse('')
+        elif request.POST['btn'] == 'login':
+            username = request.POST['username_signin']
+            password = request.POST['password']
+            user = authenticate(request,username=username,password=password)
+            if user is not None:
+                login(request,user)
+                return redirect(reverse('navbar'))
+            else:
+                raise ValidationError("kya be? yeda hain kya?")
+                return redirect(reverse('homepage'))
     else:
         return render(request, 'home.html')
 
