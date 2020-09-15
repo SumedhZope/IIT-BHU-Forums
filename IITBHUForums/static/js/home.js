@@ -28,8 +28,16 @@ $(document).on('submit','#register-form-id', function(e){
             password2 : $('#password2').val(),
             csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
         },
-        success:function(){
-            window.location.href = "testnav/"
+        success:function(data){
+            if(data.result == 'success'){
+                window.location.href = 'testnav/';
+            }else{
+                $('#register_error').css({'display':'block'});
+                $('#register_error').html(data.message);
+            }
+        },
+        error:function() {
+            contact_right_message_sent.text('Sorry! Something went wrong.')
         }
     });
 });
@@ -48,8 +56,15 @@ $(document).on('submit','#login-form-id', function(e){
             password : $('#password').val(),
             csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
         },
-        success:function(){
-            window.location.href = 'testnav/'
+        success:function(data){
+            if(data.result == 'success'){
+                window.location.href = 'testnav/';
+            }else{
+                $('#login_error').css({'display':'block'});
+            }
+        },
+        error:function() {
+            contact_right_message_sent.text('Sorry! Something went wrong.')
         }
     });
 });

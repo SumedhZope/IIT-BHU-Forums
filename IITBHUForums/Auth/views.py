@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,reverse
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .forms import CreateNewUserForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -39,6 +39,7 @@ from django.contrib.auth import authenticate,login,logout
 #            return render(request, 'register.html', {'form' : form})
 #    return render(request, 'register.html', {'form' : form})
 
+
 def landingpage(request,*args,**kwargs):
     if request.method == 'POST':
         if request.POST['btn'] == 'register':
@@ -46,23 +47,59 @@ def landingpage(request,*args,**kwargs):
             email = request.POST['email']
             password1 = request.POST['password1']
             password2 = request.POST['password2']
-
-            print(username,email,password1,password2)
-            if password2 == password1:
-                user = User.objects.create_user(username,email,password1)
-                user = authenticate(request, username=username, password=password1)
-                login(request,user)
-            return HttpResponse('')
+            if len(username)>20:
+                data = {
+                    'result' : 'error',
+                    'target' : 'username',
+                    'message' : 'Username had a length limitation of 20 characters',
+                }
+                return JsonResponse(data)
+            if User.objects.filter(username=username).exists()==False:
+                if password2 == password1:
+                    if len(password1)<8:
+                        data = {
+                            'result' : 'error',
+                            'target' : 'password',
+                            'message' : 'Password must contain atleast 8 characters',
+                        }
+                        return JsonResponse(data)
+                    user = User.objects.create_user(username,email,password1)
+                    user = authenticate(request, username=username, password=password1)
+                    login(request,user)
+                    data = {
+                        'result' : 'success',
+                    }
+                    return JsonResponse(data)
+                else:
+                    data = {
+                        'result' : 'error',
+                        'target' : 'password',
+                        'message' : 'Your password didn\'t match',
+                    }
+                    return JsonResponse(data)
+            else:
+                data = {
+                    'result' : 'error',
+                    'target' : 'username',
+                    'message' : 'Username already taken',
+                }
+                return JsonResponse(data)
+                
         elif request.POST['btn'] == 'login':
             username = request.POST['username_signin']
             password = request.POST['password']
             user = authenticate(request,username=username,password=password)
             if user is not None:
                 login(request,user)
-                return redirect(reverse('navbar'))
+                data = {
+                    'result' : 'success',
+                }
+                return JsonResponse(data)
             else:
-                raise ValidationError("kya be? yeda hain kya?")
-                return redirect(reverse('homepage'))
+                data = {
+                    'result' : 'error',
+                }
+                return JsonResponse(data)
     else:
         return render(request, 'home.html')
 
