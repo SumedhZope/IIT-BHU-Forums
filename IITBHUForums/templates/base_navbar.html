@@ -3,28 +3,33 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link rel="stylesheet" href={% static 'style.css' %} />
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     </head>
     <body class="page">
-        <div class="navbar">
+        <div class="base_navbar reset-this">
             <div class="burger">
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
             </div>
+                <img class =logo src="{% static 'img/IIT BHU Forums.png' %}">
             <ul class = "ul-1">   
-                <li><img class =logo src="{% static 'img/IIT BHU Forums.png' %}">
-                <li><img src="{% static 'img/home.png' %}">
-                <li><img src="{% static 'img/events.png' %}">
-                <li><img src="{% static 'img/groups.png' %}">
-                <li><img src="{% static 'img/chat.png' %}">
+                <li><img class="nav-icon" src="{% static 'img/home-active.png' %}">
+                <li><img class="nav-icon" src="{% static 'img/events.png' %}">
+                <li><img class="nav-icon" src="{% static 'img/groups.png' %}">
+                <li><img class="nav-icon" src="{% static 'img/chat.png' %}">
             </ul>
             <div class="fake-image">
                 <div class="search">
-                    <input class="search-input" type="text" style="background-color: #abc0e4;" placeholder="Search">
-                    <img class="search-image" style="background-color: #abc0e4;" src="{% static 'img/search.png'%}">
+                    <input class="search-input" type="text" style="background-color: #11161D;" placeholder="Search">
+                    <img class="search-image" style="background-color: #11161D;" src="{% static 'img/search.png'%}">
                 </div>
             </div>
             <ul class="ul-2">
@@ -33,11 +38,8 @@
                 <li class = "triangle">
             </ul>
             <div class="dropdown">
-                <ul>
-                    <li class=""> Profile
-                    <li> Dark mode  
-                    <li> Logout
-                </ul>
+                    <div class="dropdown-content">Profile</div>
+                    <div class="dropdown-content">Log Out</div>
             </div>
         </div>
     </body>
