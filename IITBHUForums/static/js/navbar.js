@@ -35,8 +35,11 @@ const dropdownUser = () =>{
 const searchbar = () => {
     const search = document.querySelector('.search');
     const searchimage = document.querySelector('.search-image');
+    const searchinput = document.querySelector('.search-input');
     searchimage.addEventListener('click',() => {
         search.classList.toggle('search-active');
+        searchimage.classList.toggle('search-image-active');
+        searchinput.classList.toggle('search-input-active');
     });
 
 }
