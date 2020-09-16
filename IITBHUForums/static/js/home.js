@@ -12,3 +12,59 @@ function resposive(){
 }
 
 
+$(document).on('submit','#register-form-id', function(e){
+    e.preventDefault();
+    var btn_val = $(this).context.getElementsByClassName('btn')[0].value;
+    console.log(btn_val)
+    $.ajax({
+        btn : btn_val,
+        type : 'POST',
+        url : '/',
+        data : {
+            btn : btn_val,
+            username_signup : $('#username-signup').val(),
+            email : $('#email').val(),
+            password1 : $('#password1').val(),
+            password2 : $('#password2').val(),
+            csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+        },
+        success:function(data){
+            if(data.result == 'success'){
+                window.location.href = 'testnav/';
+            }else{
+                $('#register_error').css({'display':'block'});
+                $('#register_error').html(data.message);
+            }
+        },
+        error:function() {
+            contact_right_message_sent.text('Sorry! Something went wrong.')
+        }
+    });
+});
+
+$(document).on('submit','#login-form-id', function(e){
+    e.preventDefault();
+    var btn_val = $(this).context.getElementsByClassName('btn')[0].value;
+    console.log(btn_val)
+    $.ajax({
+        btn : btn_val,
+        type : 'POST',
+        url : '/',
+        data : {
+            btn : btn_val,
+            username_signin : $('#username-signin').val(),
+            password : $('#password').val(),
+            csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+        },
+        success:function(data){
+            if(data.result == 'success'){
+                window.location.href = 'testnav/';
+            }else{
+                $('#login_error').css({'display':'block'});
+            }
+        },
+        error:function() {
+            contact_right_message_sent.text('Sorry! Something went wrong.')
+        }
+    });
+});
