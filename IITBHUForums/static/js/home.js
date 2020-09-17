@@ -15,7 +15,6 @@ function resposive(){
 $(document).on('submit','#register-form-id', function(e){
     e.preventDefault();
     var btn_val = $(this).context.getElementsByClassName('btn')[0].value;
-    console.log(btn_val)
     $.ajax({
         btn : btn_val,
         type : 'POST',
@@ -45,7 +44,6 @@ $(document).on('submit','#register-form-id', function(e){
 $(document).on('submit','#login-form-id', function(e){
     e.preventDefault();
     var btn_val = $(this).context.getElementsByClassName('btn')[0].value;
-    console.log(btn_val)
     $.ajax({
         btn : btn_val,
         type : 'POST',
