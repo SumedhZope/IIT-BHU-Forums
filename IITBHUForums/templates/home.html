@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href={% static 'css/home.css' %} />
         <link rel="stylesheet" href={% static 'css/login.css' %} />
         <link rel="stylesheet" href="{% static 'css/register.css' %}" />
@@ -12,12 +13,12 @@
         <script src="{% static 'js/home.js' %}"></script>
         <script src="{% static 'js/register.js' %}"></script>
         <script src="{% static 'js/login.js' %}"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+        
     </head>
     <header>
         <div class="d-flex header m-0">
@@ -43,7 +44,7 @@
                 <div class="content_child m-0 d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-center">
-                            <button class="sign_up_btn btn"  data-toggle="modal"
+                            <button class="sign_up_btn btn" data-toggle="modal"
                                 data-target="#Register"><b>Sign Up</b></button>
                         </div>
                         <div class="text-center heading mt-3">Join our community</div>

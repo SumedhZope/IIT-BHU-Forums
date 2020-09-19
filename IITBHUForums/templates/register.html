@@ -6,7 +6,7 @@
             <div class="modal-body" id="finalBody" >
                 <div class="close-button" onclick="hideRegister()"><img src="{% static 'img/close.png' %}"
                         width="36px" height="36px"></div>
-                <form method="POST" class="register-form">
+                <form class="register-form" id="register-form-id">
                     {% csrf_token %}
                     <div class="container">
                         <div class="row">
@@ -14,7 +14,7 @@
                                 Username<span style="color: red;"> *</span> :
                             </div>
                             <div class="input-center col-sm">
-                                <input type="text" name="Username" class="input-tabs">
+                                <input type="text" name="Username" class="input-tabs" id="username-signup" required>
                             </div>
                         </div>
                         <div class="row">
@@ -22,7 +22,7 @@
                                 Email<span style="color: red;"> *</span> :
                             </div>
                             <div class="input-center col-sm">
-                                <input type="email" name="email" class="input-tabs">
+                                <input type="email" name="email" class="input-tabs" id="email" required>
                             </div>
                         </div>
                         <div class="row">
@@ -30,7 +30,7 @@
                                 Password<span style="color: red;"> *</span> :
                             </div>
                             <div class="input-center col-sm">
-                                <input type="password" name="password" class="input-tabs">
+                                <input type="password" name="password" class="input-tabs" id="password1" required>
                             </div>
                         </div>
                         <div class="row">
@@ -38,12 +38,13 @@
                                 Confirm password<span style="color: red;"> *</span> :
                             </div>
                             <div class="input-center col-sm">
-                                <input type="password" name="cPassword" class="input-tabs">
+                                <input type="password" name="cPassword" class="input-tabs" id="password2" required>
                             </div>
                         </div>
                     </div>
+                    <div class="text-center" id="register_error" style="color:red;display:none;"></div>
                     <div style="text-align: center; margin-top: 20px;">
-                    <button type="button" class="btn RegisterButton">Register</button>
+                    <button type="submit" class="btn RegisterButton" value="register">Register</button>
                     </div>
                 </form>
                 <div class="lastInModel d-flex justify-content-center">
