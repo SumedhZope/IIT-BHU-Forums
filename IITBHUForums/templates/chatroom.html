@@ -1,0 +1,20 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href={% static 'style.css' %} />
+    </head>
+    <body>
+        {% for person in list %}
+            {{person}} <br>
+            <form method="POST" id="{{ person }}-form">
+                {% csrf_token %}
+                <input id="{{ person }}-input">
+                <button id="{{ person }}" class="btn" type="submit">send</button> <br>
+            </form>
+        {% endfor %}
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+    <script src = {% static 'js/chatroom.js' %}></script>
+</html>
