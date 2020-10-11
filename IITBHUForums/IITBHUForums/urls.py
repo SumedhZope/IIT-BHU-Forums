@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('forum.urls')),
     path('',include('Auth.urls')),
+    path('new_group/',include('groups.urls')),
+
 ]

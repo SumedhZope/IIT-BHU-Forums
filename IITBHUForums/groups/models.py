@@ -4,5 +4,5 @@ from django.db import models
 class group(models.Model):
     name= models.CharField(max_length=100)
     description= models.TextField()
-    group_icon=models.ImageField()
-    group_id=models.IntegerField(default=0)
+    #group_icon=models.ImageField()
+    #group_id=models.IntegerField(default=0)
