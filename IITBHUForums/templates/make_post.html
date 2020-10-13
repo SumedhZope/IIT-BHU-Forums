@@ -1,0 +1,17 @@
+{% load static %}
+<html>
+<body>
+    <form method="POST">
+        {%csrf_token%}
+        <select name="group">
+            {% for group in groups %}
+            <option value={{ group.id }}> {{ group.name }}</option>
+            {% endfor %}
+        </select>
+        <input name="title" type="text" placeholder="title">
+        <input name="content" type="text" placeholder="Content">
+        <input name="submit" type="submit">
+    </form>
+</body>
+
+</html>
