@@ -1,20 +1,39 @@
+{%extends 'base_navbar.html'%}
 {% load static %}
-
-<html>
-    <head>
-        <link rel="stylesheet" href={% static 'style.css' %} />
-    </head>
-    <body>
-        {% for person in list %}
-            {{person}} <br>
-            <form method="POST" id="{{ person }}-form">
-                {% csrf_token %}
-                <input id="{{ person }}-input">
-                <button id="{{ person }}" class="btn" type="submit">send</button> <br>
-            </form>
-        {% endfor %}
-    </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/chatroom.css' %}" />
+{% endblock css %}
+{% block js %}
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
     <script src = {% static 'js/chatroom.js' %}></script>
-</html>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+{% endblock js %}
+{% block content %}
+            <div class="container d-flex pt-5">
+                <div class="col-3 text-center">
+                    {% for person in list %}
+                        <div class="all-names" id="{{ person.0 }}-name" onclick="switch_chat(this)">{{ person.0 }}</div> <br>
+                    {% endfor %}
+                </div>
+                <div class="chat-holder col-9">
+                    {% for person in list %}
+                        <div class="chats" id="{{ person.0 }}-chats" style="display:none">
+                            <div id='{{ person.0 }}-chat-holder'>
+                                {% for chat in  person.1.chatmessage_set.all %}
+                                    <li>{{ chat.message }} via {{ chat.user }}</li>
+                                {% endfor %}
+                            </div>
+                            <form method="POST" id="{{ person.0 }}-form">
+                                {% csrf_token %}
+                                <input id="{{ person.0 }}-input">
+                                <button id="{{ person.0 }}" class="btn" type="submit">send</button> <br>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+{% endblock content %}

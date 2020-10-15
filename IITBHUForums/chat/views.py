@@ -55,7 +55,8 @@ def chatroom(request):
     list_of_users = []
     for x in Thread.objects.by_user(request.user):
         if x.first != request.user:
-            list_of_users.append(x.first)
+            list_of_users.append([x.first,Thread.objects.get_or_new(x.first,x.second)[0]])
         else:
-            list_of_users.append(x.second)
+            list_of_users.append([x.second,Thread.objects.get_or_new(x.first,x.second)[0]])
+        print(list_of_users[-1])
     return render(request,'chatroom.html', {'list' : list_of_users})

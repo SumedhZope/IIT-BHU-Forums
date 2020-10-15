@@ -1,4 +1,12 @@
-console.log('loaded')
+$(document).ready(function(){
+    resposive();
+});
+
+function resposive(){
+    var h = $(window).height()-$('.base_navbar').height();
+    h-=55;
+    $('.container').css({'height':h+'px'});
+}
 
 const btn = document.getElementsByClassName('btn') 
 
@@ -9,9 +17,8 @@ Array.from(btn).forEach(element => {
     var loc = window.location
     console.log(loc)
     var wsStart = 'ws://'
-    var chatHolder = $('#chat-items')
+    var chatHolder = $('#'+id_main+'-chat-holder')
     var me = $('#myUsername').val()
-
     if (loc.protocol == 'https://'){
         wsStart = 'wss://'
     }
@@ -38,6 +45,7 @@ Array.from(btn).forEach(element => {
                 }
                 socket.send(JSON.stringify(finalData))
             }
+            inputElement.value = ''
         })
     }
 
@@ -50,3 +58,16 @@ Array.from(btn).forEach(element => {
     }
 
 });
+
+
+
+
+function switch_chat(p){
+    var s = p.id.slice(0,-5) + "-chats";
+    $('.chats').css({'display':'none'});
+    $('#'+s).css({'display':'block'});
+    $('.all-names').css({'background-color':'#393E46'});
+    $('#'+p.id).css({'background-color':'#222831'});
+    $('#'+p.id).css({'':''});
+    $('#'+p.id).css({'':''});
+}
