@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse,JsonResponse
+from django.urls import reverse
 from django.contrib.auth import authenticate,login
-from .models import Group,Post
+from .models import Group,Post,Comments
 import datetime
 
 def nav(request):
@@ -29,4 +31,33 @@ def make_post(request):
         if title is not None and content is not None :
             r = Post(title=title, content=content, created_at=now, user=user, group=group) 
             r.save()
+            return redirect(reverse('post_view',kwargs={
+                    'id' : r.id
+                }))
     return render(request, 'make_post.html', context)
+
+def post_view(request,*args,**kwargs):
+    if request.method == 'POST':
+        now = datetime.datetime.now()
+        comment = request.POST['comment']
+        if comment is not None :
+            post = Post.objects.get(id=kwargs.get('id'))
+            c = Comments(comment=comment, created_at=now, post=post)
+            c.save()
+            data = {
+                'result' : 'success',
+                'new_comment' : comment,
+            }
+            return JsonResponse(data)
+        data = {
+            'result' : 'fail',
+        }
+        return JsonResponse(data)
+        
+    post = Post.objects.get(id=kwargs.get('id'))
+    comments = Comments.objects.filter(post=kwargs.get('id'))
+    context = {
+        'post' : post,
+        'comments' : comments,
+    }
+    return render(request, 'post_view.html', context)
