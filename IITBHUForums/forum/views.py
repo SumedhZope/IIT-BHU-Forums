@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login
 from .models import Group,Post
 import datetime
+from django.contrib.auth.models import User
 
 def nav(request):
     return render(request,'base_navbar.html')
@@ -30,3 +31,5 @@ def make_post(request):
             r = Post(title=title, content=content, created_at=now, user=user, group=group) 
             r.save()
     return render(request, 'make_post.html', context)
+def groups(request):
+    return render(request,'groups_landing.html')

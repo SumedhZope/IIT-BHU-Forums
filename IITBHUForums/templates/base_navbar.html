@@ -2,44 +2,49 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href={% static 'style.css' %} />
-        <meta name="viewport" content="width=device-width">
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    </head>
-    <body class="page">
-        <div class="navbar">
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-            <ul class = "ul-1">   
-                <li><img class =logo src="{% static 'img/IIT BHU Forums.png' %}">
+
+<head>
+    <link rel="stylesheet" href={% static 'style.css' %} />
+    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+</head>
+
+<body class="page">
+    <div class="navbar">
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <ul class="ul-1">
+            <li><img class=logo src="{% static 'img/IIT BHU Forums.png' %}">
                 <li><img src="{% static 'img/home.png' %}">
-                <li><img src="{% static 'img/events.png' %}">
-                <li><img src="{% static 'img/groups.png' %}">
-                <li><img src="{% static 'img/chat.png' %}">
-            </ul>
-            <div class="fake-image">
-                <div class="search">
-                    <input class="search-input" type="text" style="background-color: #abc0e4;" placeholder="Search">
-                    <img class="search-image" style="background-color: #abc0e4;" src="{% static 'img/search.png'%}">
-                </div>
-            </div>
-            <ul class="ul-2">
-                <li><img class = "profile-picture" src="{% static 'img/dpp.jpg'%}">
-                <li class="user">{{request.user}}
-                <li class = "triangle">
-            </ul>
-            <div class="dropdown">
-                <ul>
-                    <li class=""> Profile
-                    <li> Dark mode  
-                    <li> Logout
-                </ul>
+                    <li><img src="{% static 'img/events.png' %}">
+                        <li>
+                            <a href="/groups"><img src="{% static 'img/groups.png' %}"></a>
+                            <li><img src="{% static 'img/chat.png' %}">
+        </ul>
+        <div class="fake-image">
+            <div class="search">
+                <input class="search-input" type="text" style="background-color: #abc0e4;" placeholder="Search">
+                <img class="search-image" style="background-color: #abc0e4;" src="{% static 'img/search.png'%}">
             </div>
         </div>
-    </body>
-    <script src="{% static 'js/navbar.js'%}"></script>
+        <ul class="ul-2">
+            <li><img class="profile-picture" src="{% static 'img/dpp.jpg'%}">
+                <li class="user">{{request.user}}
+                    <li class="triangle">
+        </ul>
+        <div class="dropdown">
+            <ul>
+                <li> <a href="/profile/">Profile</a>
+                    <li> Dark mode
+                        <li> Logout
+            </ul>
+        </div>
+    </div>
+    {%block body%}{%endblock%}
+</body>
+<script src="{% static 'js/navbar.js'%}"></script>
+
 </html>

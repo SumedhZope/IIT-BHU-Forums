@@ -1,13 +1,10 @@
-{% load static %}
-<html>
-<body>
-    <form action="/new_group/" method="POST">
-        {%csrf_token%}
-        <input name="groupName" type="text" placeholder="Group Name">
-        <input name="Description" type="text" placeholder="Description">
-        <input name="submit" type="submit">
-        <!--input name="groupName" type="text" placeholder="Group Name"-->
-    </form>
-</body>
-
-</html>
+{%extends 'base_navbar.html'%} {%block body%}
+<form action="." method="POST">
+    {%csrf_token%}
+    <input name="groupName" type="text" placeholder="Group Name">
+    <input name="Description" type="text" placeholder="Description">
+    <input name="groupIcon" type="file">
+    <input name="submit" type="submit">
+    <!--input name="groupName" type="text" placeholder="Group Name"-->
+</form>
+{%endblock%}
