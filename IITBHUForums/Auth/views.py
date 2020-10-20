@@ -71,7 +71,8 @@ def landingpage(request,*args,**kwargs):
         return render(request, 'home.html')
 
 def add_friend(request,*args,**kwargs):
-    user = user_profile.objects.get(user=request.user)
+    username='' #add second username here
+    user = user_profile.objects.get(user=User.objects.get(username=username))
     Relationship.objects.get_or_create(
         from_person=request.user,
         to_person=user
@@ -81,6 +82,18 @@ def add_friend(request,*args,**kwargs):
         to_person=request.user
     )
     return HttpResponse("<h1>Done!</h1>")
+
+def remove_friend(request, *args, **kwargs):
+    username='' #add second username here
+    user = user_profile.objects.get(user=User.objects.get(username=username))
+    Relationship.objects.get(
+        from_person=request.user,
+        to_person=user
+    ).delete()
+    Relationship.objects.get(
+        from_person=user,
+        to_person=request.user
+    ).delete()
 def friends_list(request,*args,**kwargs):
     user = user_profile.objects.get(user=request.user)
     rel = user.relationships.filter(
