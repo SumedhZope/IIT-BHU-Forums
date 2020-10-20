@@ -4,6 +4,7 @@ from .forms import CreateNewUserForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from .models import user_profile,Relationship
 
 
 def landingpage(request,*args,**kwargs):
@@ -69,10 +70,27 @@ def landingpage(request,*args,**kwargs):
     else:
         return render(request, 'home.html')
 
+def add_friend(request,*args,**kwargs):
+    user = user_profile.objects.get(user=request.user)
+    Relationship.objects.get_or_create(
+        from_person=request.user,
+        to_person=user
+    )
+    Relationship.objects.get_or_create(
+        from_person=user,
+        to_person=request.user
+    )
+    return HttpResponse("<h1>Done!</h1>")
+def friends_list(request,*args,**kwargs):
+    user = user_profile.objects.get(user=request.user)
+    rel = user.relationships.filter(
+        to_people__from_person=user
+        )
+    args={'friends' : rel}
+    return render(request, 'list.html', args)
 def logout_func(request, *args, **kwargs):
     logout(request)
     return redirect(reverse('homepage'))
-
 
 
 
