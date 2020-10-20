@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import user_profile,Relationship
+from .models import userprofile,Relationship
 
-admin.site.register(user_profile)
+admin.site.register(userprofile)
 admin.site.register(Relationship)

@@ -4,7 +4,7 @@ from .forms import CreateNewUserForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from .models import user_profile,Relationship
+from .models import userprofile,Relationship
 
 
 def landingpage(request,*args,**kwargs):
@@ -72,7 +72,7 @@ def landingpage(request,*args,**kwargs):
 
 def add_friend(request,*args,**kwargs):
     username='' #add second username here
-    user = user_profile.objects.get(user=User.objects.get(username=username))
+    user = userprofile.objects.get(user=User.objects.get(username=username))
     Relationship.objects.get_or_create(
         from_person=request.user,
         to_person=user
@@ -85,7 +85,7 @@ def add_friend(request,*args,**kwargs):
 
 def remove_friend(request, *args, **kwargs):
     username='' #add second username here
-    user = user_profile.objects.get(user=User.objects.get(username=username))
+    user = userprofile.objects.get(user=User.objects.get(username=username))
     Relationship.objects.get(
         from_person=request.user,
         to_person=user
@@ -95,7 +95,7 @@ def remove_friend(request, *args, **kwargs):
         to_person=request.user
     ).delete()
 def friends_list(request,*args,**kwargs):
-    user = user_profile.objects.get(user=request.user)
+    user = userprofile.objects.get(user=request.user)
     rel = user.relationships.filter(
         to_people__from_person=user
         )
