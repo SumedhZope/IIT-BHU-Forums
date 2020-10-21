@@ -1,0 +1,8 @@
+{% extends "base_navbar.html" %}
+
+{% block content %}
+    {% for post in posts %}
+        {{ post.title }} <br>
+        {{ post.content }} <br>
+    {% endfor %}
+{% endblock content %}
