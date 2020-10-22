@@ -8,12 +8,13 @@ def feed(request):
     user = userprofile.objects.get(user=request.user)
     for g in Group.objects.all():
         g.members.add(user)
+
     post_list = []
+    
     for g in user.group_set.all():
         for p in g.post_set.all():
             post_list.append(p)
-            print(p.created_at)
-
+            
     def get_created_date(Post):
         return Post.created_at
     post_list.sort(key=get_created_date, reverse=True)

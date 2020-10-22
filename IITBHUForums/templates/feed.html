@@ -2,7 +2,14 @@
 
 {% block content %}
     {% for post in posts %}
-        {{ post.title }} <br>
-        {{ post.content }} <br>
+        <div class="post-box">
+            <p>{{ post.user }} {{ post.group }}</p>
+            <div class="top">
+                <p>{{ post.title }}</p>
+                <p>{{ post.created_at }}</p>
+            </div>
+            {{ post.content }}
+            <br>
+        </div>
     {% endfor %}
 {% endblock content %}
