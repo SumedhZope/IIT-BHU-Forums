@@ -15,6 +15,7 @@ from django.contrib.auth import authenticate,login,logout
 def nav(request):
     return render(request,'base_navbar.html')
 
+
 def submit_form(request):
     def checkextenstion(s):
         allextension =[".jpg", '.jpeg', '.jpe','.jif', '.jfif', '.jfi',  '.png', '.gif' ,'.webp' , '.tiff', '.tif' , '.psd' , '.raw', '.arw', '.cr2', '.nrw', '.k25' ,'.bmp', '.dib' ,'.heif', '.heic' ,'.ind', '.indd', '.indt' ,'.jp2', '.j2k','.jpf', '.jpx', '.jpm', '.mj2', '.svg', '.svgz' ,'.ai','.eps']
@@ -80,3 +81,7 @@ def groups(request):
         'group' : group
     }
     return render(request,'groups_landing.html',params)
+  
+def profile(request):
+    return render(request,'profile.html')
+

@@ -5,31 +5,42 @@ body{
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-    background-color:#5b6577 !important;
+    background-color:#222831 !important;
     box-sizing: border-box;
 }
 
 .logo{
-    max-height:90px;
+    max-height:70px;
 }
 
 .sign_in_btn{
     color:white;
-    background-color:#c68585;
-    height:90px;
-    width:220px;
+    background-color:#00ADB5;
+    height:80px;
+    width:190px;
     border-radius:10px !important;
     font-size:30px !important;
+    transition: all 0.4s;
 }
 .sign_up_btn{
     color:white;
-    background-color:#c68585;
+    background-color:#00ADB5;
     height:90px;
     width:220px;
     border-radius:10px !important;
     font-size:30px !important;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all 0.4s;
 }
+
+.sign_in_btn:hover{
+    background-color: #00FFF5;
+}
+
+.sign_up_btn:hover{
+    background-color: #00FFF5;
+}
+
 
 .loading_img{
     display: block;
@@ -49,20 +60,20 @@ body{
 }
 
 .heading{
-    color:white;
+    color: #00FFF5;
     font-size:40px;
 }
 
 .text{
-    color:white;
+    color:#00FFF5;
     font-size:25px;
 }
 
 @media only screen and (max-width: 1415px) {
     .sign_in_btn{
-        height:80px;
-        width:200px;
-        font-size:30px !important;
+        height:70px;
+        width:180px;
+        font-size:25px !important;
     }
     .sign_up_btn{
         height:80px;
@@ -74,7 +85,7 @@ body{
         width:73%;
     }
     .logo {
-        max-height:80px;
+        max-height:70px;
     }
     .content{
         display:flex;
@@ -115,14 +126,14 @@ body{
         max-width:100%;
     }
     .sign_in_btn{
-        height:70px;
+        height:60px;
         width:80%;
-        font-size:20px !important;
+        font-size:18px !important;
     }
     .sign_up_btn{
         margin-top: 40px !important;
         height:70px;
-        width:50%;
-        font-size:25px !important;
+        width:40%;
+        font-size:23px !important;
     }
 }
