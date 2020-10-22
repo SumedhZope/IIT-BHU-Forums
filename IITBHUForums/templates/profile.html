@@ -1,14 +1,18 @@
-{%extends 'base_navbar.html'%} {%load static%} {%block css%}
-<link rel="stylesheet" href={% static 'css/profile.css' %} /> {%endblock css%} {%block js%}
-<script src="{% static 'js/profile.js'%}"></script>
-{%endblock js%} {%block content%}
+{%extends 'base_navbar.html'%}
+{%load static%}
+
+{%block css%}
+<link rel="stylesheet" href={% static 'css/profile.css' %} />
+{%endblock css%}
+
+{%block content%}
 <div class="body">
     <div class="image">
         <img src={% static "img/profile.png" %} width="1000px" height="200px">
     </div>
     <div class="bio">
         <div class="name">
-            NAME
+            NAME : {{ user.username }}
         </div>
         <div class="edit">
             <img src={%static "img/edit.png"%}>
@@ -20,6 +24,16 @@
             </div>
         </div>
     </div>
+</div>
+<div class="text-center">
+    <form id="AddFriend">
+        {% csrf_token %}
+        <button type="submit" class="btn" value="add_friend">Add Friend</button>
+    </form>
+    <div id="Friends" style="display:none">
+        You both are friends
+    </div>
+    {{ status }}
 </div>
 <div class="groups_nav">
     <div class="groups">
@@ -34,3 +48,7 @@
 </div>
 
 {%endblock content%}
+
+{%block js%}
+<script src="{% static 'js/profile.js'%}"></script>
+{%endblock js%} 

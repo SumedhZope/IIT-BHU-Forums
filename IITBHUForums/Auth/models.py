@@ -3,9 +3,7 @@ from django.contrib.auth.models import User
 
 class userprofile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    relationships = models.ManyToManyField('self', through='Relationship',
-                                            symmetrical=False,
-                                            related_name='related_to')
+    friend = models.ManyToManyField('self',blank=True,symmetrical=False)
     def __str__(self):
         return self.user.username
 
