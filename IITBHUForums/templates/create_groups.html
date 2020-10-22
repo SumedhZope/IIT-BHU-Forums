@@ -42,10 +42,10 @@
             text-align:center;
         }
     </style>
-{%extends 'base_navbar.html'%} {% load static %} {%block body%}
+{%extends 'base_navbar.html'%} {% load static %} {%block content%}
 <form enctype="multipart/form-data" id="submit">
     {%csrf_token%}
-    <center><img src="C:\Users\HP\Documents\GitHub\IIT-BHU-Forums\IITBHUForums\static\img\images__2_-removebg-preview.png" style="width: 18%; height:30%;"></img></center>
+    <center><img src="{% static '/img/images__2_-removebg-preview.png' %}" style="width: 18%; height:30%"></img></center>
     <h1 class="hd">Create Group</h1>
     <input class="grp1" name="groupName" type="text" placeholder="Group Name">
     <input class="grp2" name="Description" type="textarea" placeholder="Description">
@@ -53,7 +53,7 @@
     <div id="new_group_error">
     </div>
 </form>
-{%endblock%} {%block js%}
+{%endblock content%} {%block js%}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -63,6 +63,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
 <script src="{% static '/js/create_group.js' %}"></script>
 
-{%endblock%}
+{%endblock js%}
 </body>
 </html>

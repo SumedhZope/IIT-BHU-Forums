@@ -75,6 +75,7 @@ def make_post(request):
             r = Post(title=title, content=content, created_at=now, user=user, group=group) 
             r.save()
     return render(request, 'make_post.html', context)
+    
 def groups(request):
     group=Group.objects.all()
     params = {

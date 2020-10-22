@@ -5,6 +5,6 @@ urlpatterns = [
     path('testnav/', views.nav, name='navbar'),
     path('groups/new_group/',views.submit_form,name="new_group"),
     path('new_post/', views.make_post),
-    path('groups/',views.groups,name = 'groups')
+    path('groups/',views.groups,name = 'groups'),
     path('profile/',views.profile)
 ]

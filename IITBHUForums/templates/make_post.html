@@ -46,7 +46,7 @@
     </style>
     <form method="POST">
         {%csrf_token%}
-        <center><img src="C:\Users\HP\Documents\GitHub\IIT-BHU-Forums\IITBHUForums\static\img\post-removebg-preview.png" style="width: 24%; height:30%;"></img></center>
+        <center><img src="{% static '/img/post-removebg-preview.png' %}" style="width: 24%; height:30%;"></img></center>
         <h1 class="hd">Create post</h1>
         <select class="grp1" name="group">
             {% for group in groups %}
