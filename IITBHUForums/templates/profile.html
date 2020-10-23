@@ -12,7 +12,7 @@
     </div>
     <div class="bio">
         <div class="name">
-            NAME : {{ user.username }}
+            NAME : {{ u.username }}
         </div>
         <div class="edit">
             <img src={%static "img/edit.png"%}>
@@ -26,14 +26,32 @@
     </div>
 </div>
 <div class="text-center">
-    <form id="AddFriend">
-        {% csrf_token %}
-        <button type="submit" class="btn" value="add_friend">Add Friend</button>
-    </form>
+
+    {% ifequal button_status "not_friend" %}
+        <form id="AddFriend">
+            {% csrf_token %}
+            <button type="submit" class="btn" value="add_friend">Add Friend</button>
+        </form>
+    {% else %}
+        {% ifnotequal button_status "own profile" %}
+            <div id="Friends_0" style="display:block">
+                {{ button_status }}
+            </div>
+        {% endifnotequal %}
+    {% endifequal %}
     <div id="Friends" style="display:none">
-        You both are friends
+        {{ button_status }}
     </div>
-    {{ status }}
+    {% ifequal button_status "friend_request" %}
+        <form id="AcceptFriend">
+            {% csrf_token %}
+            <button type="submit" class="btn" value="accept_friend">Accept Friend Request</button>
+        </form>
+        <form id="DeclineFriend">
+            {% csrf_token %}
+            <button type="submit" class="btn" value="decline_friend">Decline Friend Request</button>
+        </form>
+    {% endifequal %}
 </div>
 <div class="groups_nav">
     <div class="groups">

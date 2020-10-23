@@ -1,0 +1,32 @@
+{%extends 'base_navbar.html'%}
+{%load static%}
+
+{%block css%}
+<link rel="stylesheet" href={% static 'css/friend_requests.css' %} />
+{%endblock css%}
+
+
+{%block content%}
+<div>
+    {% for request in requests %}
+        <div id="{{ request.from_user.id }}">
+            {{ request.from_user }}
+            <div>
+                <form class="AcceptFriend">
+                    {% csrf_token %}
+                    <button type="submit" class="btn" value="{{ request.from_user.id }}">Accept Friend Request</button>
+                </form>
+                <form class="DeclineFriend">
+                    {% csrf_token %}
+                    <button type="submit" class="btn" value="{{ request.from_user.id }}">Decline Friend Request</button>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{%endblock content%}
+
+{%block js%}
+<script src="{% static 'js/friend_requests.js'%}"></script>
+{%endblock js%} 

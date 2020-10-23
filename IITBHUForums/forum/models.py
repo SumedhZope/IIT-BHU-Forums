@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from Auth.models import userprofile
+#from Auth.models import userprofile
 import datetime
 
 class Group(models.Model):
@@ -8,7 +8,7 @@ class Group(models.Model):
     description=models.TextField(default="Most sensibel talks")
     created_at = models.DateTimeField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    members = models.ManyToManyField(userprofile, blank=True)
+  #  members = models.ManyToManyField(userprofile, blank=True)
     def __str__(self):
         return self.name
 

@@ -4,7 +4,6 @@ from .forms import CreateNewUserForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from .models import userprofile,Relationship
 
 
 def landingpage(request,*args,**kwargs):
@@ -70,40 +69,40 @@ def landingpage(request,*args,**kwargs):
     else:
         return render(request, 'home.html')
 
-def add_friend(request,*args,**kwargs):
-    username='' #add second username here
-    user = userprofile.objects.get(user=User.objects.get(username=username))
-    Relationship.objects.get_or_create(
-        from_person=request.user,
-        to_person=user
-    )
-    Relationship.objects.get_or_create(
-        from_person=user,
-        to_person=request.user
-    )
-    return HttpResponse("<h1>Done!</h1>")
+#def add_friend(request,*args,**kwargs):
+#    username='' #add second username here
+#    user = userprofile.objects.get(user=User.objects.get(username=username))
+#    Relationship.objects.get_or_create(
+#        from_person=request.user,
+#        to_person=user
+#    )
+#    Relationship.objects.get_or_create(
+#        from_person=user,
+#        to_person=request.user
+#    )
+#    return HttpResponse("<h1>Done!</h1>")
 
-def remove_friend(request, *args, **kwargs):
-    username='' #add second username here
-    user = userprofile.objects.get(user=User.objects.get(username=username))
-    Relationship.objects.get(
-        from_person=request.user,
-        to_person=user
-    ).delete()
-    Relationship.objects.get(
-        from_person=user,
-        to_person=request.user
-    ).delete()
-def friends_list(request,*args,**kwargs):
-    user = userprofile.objects.get(user=request.user)
-    rel = user.relationships.filter(
-        to_people__from_person=user
-        )
-    args={'friends' : rel}
-    return render(request, 'list.html', args)
+#def remove_friend(request, *args, **kwargs):
+#    username='' #add second username here
+#    user = userprofile.objects.get(user=User.objects.get(username=username))
+#    Relationship.objects.get(
+#        from_person=request.user,
+#        to_person=user
+#    ).delete()
+#    Relationship.objects.get(
+#        from_person=user,
+#        to_person=request.user
+#    ).delete()
+#def friends_list(request,*args,**kwargs):
+#    user = userprofile.objects.get(user=request.user)
+#    rel = user.relationships.filter(
+#        to_people__from_person=user
+#        )
+#    args={'friends' : rel}
+#    return render(request, 'list.html', args)
 def logout_func(request, *args, **kwargs):
     logout(request)
     return redirect(reverse('homepage'))
 
-
-
+#
+#

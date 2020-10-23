@@ -6,5 +6,5 @@ urlpatterns = [
     #path('register/',views.register),
     path('', views.landingpage, name='homepage'),
     path('logout/', views.logout_func),
-    path('friends/', views.friends_list)
+  #  path('friends/', views.friends_list)
 ]
