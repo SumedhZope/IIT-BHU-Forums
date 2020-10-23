@@ -6,7 +6,9 @@ import datetime
 class Group(models.Model):
     name = models.CharField(max_length=50)
     description=models.TextField(default="Most sensibel talks")
+    groupicon = models.ImageField(upload_to ="groupicon/")
     created_at = models.DateTimeField()
+    created_by = User.username
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     def __str__(self):
         return self.name

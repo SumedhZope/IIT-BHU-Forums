@@ -1,13 +1,68 @@
-{% load static %}
 <html>
-<body>
-    <form action="/new_group/" method="POST">
-        {%csrf_token%}
-        <input name="groupName" type="text" placeholder="Group Name">
-        <input name="Description" type="text" placeholder="Description">
-        <input name="submit" type="submit">
-        <!--input name="groupName" type="text" placeholder="Group Name"-->
-    </form>
-</body>
+<body style="background-color:#5b6577; ">
+    <style>
+        .grp1{
+            color:black;
+            text-align:center;
+            width:40%;
+            margin-left:30%;
+            margin-right:30%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            height:15%;
+            min-height:25px;
+            max-height:50px;
+        }
+        .grp2{
+            color:black;
+            text-align:center;
+            width:40%;
+            margin-left:30%;
+            margin-right:30%;
+            height:35%;
+            min-height:25px;
+            max-height:200px;
+    
+        }
+        .grp3{
+            color:black;
+            text-align:center;
+            height:15%;
+            min-height:25px;
+            max-height:50px;
+            width:20%;
+            margin-left:40%;
+            margin-right:40%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+        .hd{
+            color:crimson;
+            font-size: 50px;
+            text-align:center;
+        }
+    </style>
+{%extends 'base_navbar.html'%} {% load static %} {%block content%}
+<form enctype="multipart/form-data" id="submit">
+    {%csrf_token%}
+    <center><img src="{% static '/img/images__2_-removebg-preview.png' %}" style="width: 18%; height:30%"></img></center>
+    <h1 class="hd">Create Group</h1>
+    <input class="grp1" name="groupName" type="text" placeholder="Group Name">
+    <input class="grp2" name="Description" type="textarea" placeholder="Description">
+    <input class="grp3" name="submit" type="submit">
+    <div id="new_group_error">
+    </div>
+</form>
+{%endblock content%} {%block js%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+<script src="{% static '/js/create_group.js' %}"></script>
 
+{%endblock js%}
+</body>
 </html>

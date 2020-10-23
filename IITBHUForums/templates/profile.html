@@ -1,0 +1,36 @@
+{%extends 'base_navbar.html'%} {%load static%} {%block css%}
+<link rel="stylesheet" href={% static 'css/profile.css' %} /> {%endblock css%} {%block js%}
+<script src="{% static 'js/profile.js'%}"></script>
+{%endblock js%} {%block content%}
+<div class="body">
+    <div class="image">
+        <img src={% static "img/profile.png" %} width="1000px" height="200px">
+    </div>
+    <div class="bio">
+        <div class="name">
+            NAME
+        </div>
+        <div class="edit">
+            <img src={%static "img/edit.png"%}>
+        </div>
+        <div class="fbio">
+            YOUR BIO
+            <div class="credits">
+                credits
+            </div>
+        </div>
+    </div>
+</div>
+<div class="groups_nav">
+    <div class="groups">
+        groups
+    </div>
+    <div class="gear">
+        <img src={%static 'img/settings.png' %} width="100px" height="100px">
+    </div>
+</div>
+<div class="content">
+
+</div>
+
+{%endblock content%}
