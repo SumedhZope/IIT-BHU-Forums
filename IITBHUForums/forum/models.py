@@ -27,8 +27,9 @@ class Post(models.Model):
         })
 
 class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(default='')
-    created_at = models.DateField()
+    created_at = models.DateTimeField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     def __str__(self):
         return self.comment

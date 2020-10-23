@@ -1,28 +1,38 @@
+{% extends "base_navbar.html" %}
 {% load static %}
-<html>
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
-    </head>
-    <body>
-        {{post.title}}<br>
-        {{post.content}}<br>
+{% block content %}
+    <div class="post-box">
+        <p>{{ post.user }} {{ post.group }}</p>
+        <div class="top">
+            <p>{{ post.title }}</p>
+            <p>{{ post.created_at }}</p>
+        </div>
+        {{ post.content }}
+        <br>
+        <div class="div-line"></div><br>
         <b>comments</b><br>
         <div id="comments">
             {% for comment in comments %}
+                {{ request.user }} said : <br>
                 {{ comment }}<br>
             {% endfor %}
         </div>
         <form id="comment_form">
             {%csrf_token%}
-            <input id="new_comment" name="comment" type="text" placeholder="type your comment">
-            <input class="btn" name="submit" type="submit" value="comment">
+            <input id="new_comment" name="comment" type="text" placeholder="Your comment">
         </form>
-    </body>
-    <script src="{% static 'js/post_view.js'%}"></script>
-</html>
+    </div>
+{% endblock content %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static 'css/feed.css' %} />
+{% endblock css %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+    <script src={% static 'js/post_view.js' %}></script>
+{% endblock js %}

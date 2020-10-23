@@ -71,7 +71,7 @@ def make_post(request):
         title = request.POST['title']
         content = request.POST['content']
         user = request.user
-        #group = Group.objects.get(id=request.POST['group'])
+        group = Group.objects.get(id=request.POST['group'])
 
         if title is not None and content is not None :
             r = Post(title=title, content=content, created_at=now, user=user, group=group) 
@@ -87,11 +87,13 @@ def post_view(request,*args,**kwargs):
         comment = request.POST['comment']
         if comment is not None :
             post = Post.objects.get(id=kwargs.get('id'))
-            c = Comments(comment=comment, created_at=now, post=post)
+            c = Comments(user=request.user, comment=comment, created_at=now, post=post)
             c.save()
             data = {
                 'result' : 'success',
                 'new_comment' : comment,
+                'user' : request.user.username,
+                'date' : now
             }
             return JsonResponse(data)
         data = {
@@ -100,7 +102,9 @@ def post_view(request,*args,**kwargs):
         return JsonResponse(data)
         
     post = Post.objects.get(id=kwargs.get('id'))
-    comments = Comments.objects.filter(post=kwargs.get('id'))
+    comments = Comments.objects.filter(post=kwargs.get('id')).order_by('-created_at')
+    for comment in comments:
+        print(comment.created_at)
     context = {
         'post' : post,
         'comments' : comments,

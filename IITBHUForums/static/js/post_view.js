@@ -1,4 +1,3 @@
-
 $(document).on('submit','#comment_form', function(e){
     var current_path =  window.location.href;
     e.preventDefault();
@@ -12,10 +11,14 @@ $(document).on('submit','#comment_form', function(e){
         success:function(data){
             if(data.result == 'success'){
                 var new_comment =  document.createElement("div");
-                var text = document.createTextNode(data.new_comment);
+                var text = document.createTextNode(data.user + " said : ");
+                new_comment.appendChild(text);
+                var br_tag = document.createElement("br");
+                new_comment.appendChild(br_tag);
+                text = document.createTextNode(data.new_comment);
                 new_comment.appendChild(text);
                 var comments = document.getElementById("comments");
-                comments.appendChild(new_comment);
+                comments.prepend(new_comment);
                 $('#new_comment').val('');
             }else{
                 // save for later
