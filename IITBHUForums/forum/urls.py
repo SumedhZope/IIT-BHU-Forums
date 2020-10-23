@@ -8,4 +8,4 @@ urlpatterns = [
     path('new_post/', views.make_post),
     path('groups/',views.groups,name = 'groups'),
     path('profile/',views.profile)
-
+]
