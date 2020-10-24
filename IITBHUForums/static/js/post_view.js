@@ -18,9 +18,10 @@ $(document).on('submit','#comment_form', function(e){
                 text = document.createTextNode(data.new_comment);
                 new_comment.appendChild(text);
                 var comments = document.getElementById("comments");
+                var new_br_tag = document.createElement("br");
+                comments.prepend(new_br_tag);
                 comments.prepend(new_comment);
                 var num = document.getElementById('num');
-                console.log(num.innerHTML);
                 num.innerHTML = parseInt(num.innerHTML) + 1;
                 $('#new_comment').val('');
             }
