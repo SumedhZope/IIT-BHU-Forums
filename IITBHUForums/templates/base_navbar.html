@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet"> {%block css%}{%endblock css%}
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href={% static 'css/feed.css' %} />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 </head>
 
@@ -26,9 +27,9 @@
         <img class=logo src="{% static 'img/IIT BHU Forums.png' %}">
         <ul class="ul-1">
             <li><img class="nav-icon" src="{% static 'img/home-active.png' %}">
-                <li><img class="nav-icon" src="{% static 'img/events.png' %}">
-                    <li><img class="nav-icon" src="{% static 'img/groups.png' %}">
-                        <li><img class="nav-icon" src="{% static 'img/chat.png' %}">
+            <li><img class="nav-icon" src="{% static 'img/events.png' %}">
+            <li><img class="nav-icon" src="{% static 'img/groups.png' %}">
+            <li><img class="nav-icon" src="{% static 'img/chat.png' %}">
         </ul>
         <div class="fake-image">
             <div class="search">
@@ -49,5 +50,6 @@
     {%block content%} {%endblock content%}
 </body>
 <script src="{% static 'js/navbar.js'%}"></script>
+<script src="{% static 'js/feed.js'%}"></script>
 {%block js%}{%endblock js%}
 </html>

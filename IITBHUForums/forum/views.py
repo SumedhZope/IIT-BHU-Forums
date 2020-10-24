@@ -5,8 +5,24 @@ from Auth.models import Profile,Relationship,FriendRequest
 from .models import Group,Post
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 
-def nav(request):
-    return render(request,'base_navbar.html')
+def feed(request):
+    user = userprofile.objects.get(user=request.user)
+    for g in Group.objects.all():
+        g.members.add(user)
+
+    post_list = []
+    
+    for g in user.group_set.all():
+        for p in g.post_set.all():
+            post_list.append(p)
+            
+    def get_created_date(Post):
+        return Post.created_at
+    post_list.sort(key=get_created_date, reverse=True)
+    context = {
+        'posts' : post_list
+    }
+    return render(request, 'feed.html', context)
 
 def send_friend_request(request, *args, **kwargs):
    # print(request.user.is_authenticated())
