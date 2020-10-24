@@ -1,15 +1,30 @@
 .body {
-    width: 90%;
-    height: 220px;
+    display: flex;
+    flex-direction: column;
     background-color: none;
-    margin-top: 50px;
-    margin-left: 5%;
+    margin-top: 10px;
+}
+
+.btn{
+    background-color: #393E46;
+    border-style: solid;
+    border-width: 2px;
+    border-color: darkcyan;
+    border-radius: 25px;
+}
+
+.btn-req{
+    margin: 5px;
+}
+
+.btn:hover{
+    background-color: darkcyan;
 }
 
 .image {
-    width: 28%;
-    height: 100%;
-    float: left;
+    width: 30%;
+    height: 30%;
+    margin: auto;
 }
 
 .image img {
@@ -17,60 +32,99 @@
     height: 100%;
 }
 
-.bio {
-    float: right;
-    width: 68%;
-    height: 100%;
-    background-color: none;
-    color: black;
-}
-
 .edit {
     float: right;
 }
 
 .name {
-    float: left;
-    margin-left: 1%;
+    font-size: 40px;
+    margin: auto;
 }
 
 .credits {
     float: right;
 }
 
-.fbio {
-    width: 99%;
-    height: 79%;
-    background-color: none;
-    margin-top: 4%;
-    margin-left: 1%;
-}
-
 .groups_nav {
     margin-top: 2%;
-    margin-left: 34%;
-    width: 60%;
+    width: 100%;
 }
 
 .groups {
-    float: left;
+    cursor: pointer;
+    margin-left: 10px;
     width: 100px;
     height: 50px;
     background-color: #222831;
     padding: 10px 15px;
     border-radius: 5px 5px 0px 0px;
     text-align: center;
-    line-height: 25px;
+}
+
+.groups:hover{
+    background-color:  #353f4d;
+}
+
+.posts{
+    cursor: pointer;
+    margin-left: 5px;
+    width: 100px;
+    height: 50px;
+    background-color: #222831;
+    padding: 10px 15px;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+}
+
+.posts:hover{
+    background-color:  #353f4d;
+}
+
+.friends{
+    cursor: pointer;
+    margin-left: 5px;
+    width: 100px;
+    height: 50px;
+    background-color: #222831;
+    padding: 10px 15px;
+    border-radius: 5px 5px 0px 0px;
+    text-align: center;
+}
+
+.friends:hover{
+    background-color:  #353f4d;
+}
+
+.tabs{
+    display: flex;
+    flex-direction: row;
+}
+
+.post-box{
+    background-color: blue;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.tabcontent{
+    display: none;
+    animation: fadeEffect 0.75s;
+}
+
+.active{
+    background-color: darkcyan
 }
 
 .content {
-    margin-top: 84px;
-    margin-left: 34%;
-    width: 60%;
     height: 500px;
     background-color: #787F8A;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
 }
 
-.gear {
-    float: right;
-}
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }

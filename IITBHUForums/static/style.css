@@ -370,9 +370,6 @@ img {
 
 
 @media (max-width:768px){
-    body{
-        overflow-y: hidden;
-    }
 
     .base_navbar .ul-1{
         position: absolute;

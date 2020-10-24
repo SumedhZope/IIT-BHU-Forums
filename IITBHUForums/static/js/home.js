@@ -6,7 +6,7 @@ $(window).resize(function(){
 });
 
 function resposive(){
-    var h = $(window).height()-$('.header').height()-$('.front').height();
+    var h = $(window).height()-$('.base_navbar').height()-$('.front').height();
     h /= 2;
     $('.front').css({'padding-top':h+'px'});
 }
