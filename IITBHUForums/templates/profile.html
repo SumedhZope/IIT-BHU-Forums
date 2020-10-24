@@ -58,7 +58,7 @@
         <div class="content">
             <div id="groups_content" class="tabcontent">
                 {% for group in groups %}
-                    <div class="post-box"> 
+                    <div class="post-box-post"> 
                         {{ group.name }}
                         <br>
                         {{post.title}}
@@ -67,7 +67,7 @@
             </div>
             <div id="posts_content" class="tabcontent">
                 {% for post in posts %}
-                    <div class="post-box"> 
+                    <div class="post-box-post"> 
                         {{post.user}} {{ post.group}}
                         <br>
                         {{post.title}}
@@ -76,7 +76,7 @@
             </div>
             <div id="friends_content" class="tabcontent">
                 {% for friend in friends %}
-                    <div class="post-box"> 
+                    <div class="post-box-post"> 
                         {{ friend }}
                     </div>
                 {% endfor %}

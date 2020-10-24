@@ -9,6 +9,16 @@
     margin-bottom: 5px;
 }
 
+.post-box-post{
+    background: #0a0525;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .top{
     display: flex;
     flex-direction: row;
