@@ -146,8 +146,6 @@ def add_member(request, *args, **kwargs):
     group = Group.objects.get(id=1) 
     group.members.add(Profile.objects.get(user=request.user))
     return HttpResponse("<h1> Done! <h1>")
-<<<<<<< HEAD
-=======
 
 def group_list(request,*args,**kwargs):
     group = Group.objects.get(id=kwargs.get('id'))
@@ -258,4 +256,3 @@ def groups(request):
         'group' : group
     }
     return render(request,'groups_landing.html',params)
->>>>>>> 2fe90eaef0107c9a000750b5aa26a1c8061502f2
