@@ -103,11 +103,13 @@ def post_view(request,*args,**kwargs):
         
     post = Post.objects.get(id=kwargs.get('id'))
     comments = Comments.objects.filter(post=kwargs.get('id')).order_by('-created_at')
+    num_comments = comments.count()
     for comment in comments:
         print(comment.created_at)
     context = {
         'post' : post,
         'comments' : comments,
+        'num' : num_comments,
     }
     return render(request, 'post_view.html', context)
   

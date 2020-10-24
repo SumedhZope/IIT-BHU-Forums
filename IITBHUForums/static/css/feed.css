@@ -37,6 +37,15 @@
     opacity: 0.75;
 }
 
+.comment-head{
+    display: flex;
+    flex-direction: row;
+}
+
+#left_bracket{
+    margin-left: 10px;
+}
+
 @media only screen and (max-width: 700px){
     .post-box{
         width: 100%;

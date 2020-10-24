@@ -19,9 +19,10 @@ $(document).on('submit','#comment_form', function(e){
                 new_comment.appendChild(text);
                 var comments = document.getElementById("comments");
                 comments.prepend(new_comment);
+                var num = document.getElementById('num');
+                console.log(num.innerHTML);
+                num.innerHTML = parseInt(num.innerHTML) + 1;
                 $('#new_comment').val('');
-            }else{
-                // save for later
             }
         },
         error:function() {
