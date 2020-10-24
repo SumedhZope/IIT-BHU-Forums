@@ -5,6 +5,22 @@
     margin-top: 10px;
 }
 
+.btn{
+    background-color: #393E46;
+    border-style: solid;
+    border-width: 2px;
+    border-color: darkcyan;
+    border-radius: 25px;
+}
+
+.btn-req{
+    margin: 5px;
+}
+
+.btn:hover{
+    background-color: darkcyan;
+}
+
 .image {
     width: 30%;
     height: 30%;

@@ -33,54 +33,57 @@
     {% ifequal button_status "friend_request" %}
         <form id="AcceptFriend">
             {% csrf_token %}
-            <button type="submit" class="btn" value="accept_friend">Accept Friend Request</button>
+            <button type="submit" class="btn btn-req" value="accept_friend">Accept Friend Request</button>
         </form>
         <form id="DeclineFriend">
             {% csrf_token %}
-            <button type="submit" class="btn" value="decline_friend">Decline Friend Request</button>
+            <button type="submit" class="btn btn-req" value="decline_friend">Decline Friend Request</button>
         </form>
     {% endifequal %}
 </div>
-<div class="groups_nav">
-    <div class="tabs">
-        <div class="groups tablinks" id="defaultOpen" onclick="openTab(event,'groups_content')">
-            Groups
+
+{% ifequal is_friend "True" %}
+    <div class="groups_nav">
+        <div class="tabs">
+            <div class="groups tablinks" id="defaultOpen" onclick="openTab(event,'groups_content')">
+                Groups
+            </div>
+            <div class="posts tablinks" onclick="openTab(event,'posts_content')">
+                Posts
+            </div>
+            <div class="friends tablinks" onclick="openTab(event,'friends_content')">
+                Friends
+            </div>
         </div>
-        <div class="posts tablinks" onclick="openTab(event,'posts_content')">
-            Posts
-        </div>
-        <div class="friends tablinks" onclick="openTab(event,'friends_content')">
-            Friends
+        <div class="content">
+            <div id="groups_content" class="tabcontent">
+                {% for group in groups %}
+                    <div class="post-box"> 
+                        {{ group.name }}
+                        <br>
+                        {{post.title}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="posts_content" class="tabcontent">
+                {% for post in posts %}
+                    <div class="post-box"> 
+                        {{post.user}} {{ post.group}}
+                        <br>
+                        {{post.title}}
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="friends_content" class="tabcontent">
+                {% for friend in friends %}
+                    <div class="post-box"> 
+                        {{ friend }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-    <div class="content">
-        <div id="groups_content" class="tabcontent">
-            {% for group in groups %}
-                <div class="post-box"> 
-                    {{ group.name }}
-                    <br>
-                    {{post.title}}
-                </div>
-            {% endfor %}
-        </div>
-        <div id="posts_content" class="tabcontent">
-            {% for post in posts %}
-                <div class="post-box"> 
-                    {{post.user}} {{ post.group}}
-                    <br>
-                    {{post.title}}
-                </div>
-            {% endfor %}
-        </div>
-        <div id="friends_content" class="tabcontent">
-            {% for friend in friends %}
-                <div class="post-box"> 
-                    {{ friend }}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+{% endifequal %}
 
 {%endblock content%}
 

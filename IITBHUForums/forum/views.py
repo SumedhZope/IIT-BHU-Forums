@@ -84,15 +84,23 @@ def profile(request, *args, **kwargs):
     if u.id==request.user.id:
         button_status = 'own profile'
 
+    is_friend = ""
+
+    if Profile.objects.get(user=request.user) in friends or request.user == u:
+        is_friend = "True"
+    else:
+        is_friend = "False"
+
     context={
         'u' : u,
         'button_status' : button_status,
         'friends_list' : friends,
         'sent_friend_requests' : sent_friend_requests,
         'rec_friend_requests' : rec_friend_requests,
-        'groups' : request.user.group_set.all(),
-        'posts' : request.user.post_set.all(),
+        'groups' : u.group_set.all(),
+        'posts' : u.post_set.all(),
         'friends' : friends,
+        'is_friend' : is_friend,
     }
     return render(request,'profile.html',context)
             
