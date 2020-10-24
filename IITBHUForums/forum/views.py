@@ -83,12 +83,16 @@ def profile(request, *args, **kwargs):
     #if same user
     if u.id==request.user.id:
         button_status = 'own profile'
+
     context={
         'u' : u,
         'button_status' : button_status,
         'friends_list' : friends,
         'sent_friend_requests' : sent_friend_requests,
-        'rec_friend_requests' : rec_friend_requests
+        'rec_friend_requests' : rec_friend_requests,
+        'groups' : request.user.group_set.all(),
+        'posts' : request.user.post_set.all(),
+        'friends' : friends,
     }
     return render(request,'profile.html',context)
             
@@ -127,6 +131,7 @@ def add_member(request, *args, **kwargs):
     group = Group.objects.get(id=1) #add group here
     group.members.add(userprofile.objects.get(user=request.user))
     return HttpResponse("<h1> Done! <h1>")
+
 def group_list(request,*args,**kwargs):
     group = Group.objects.get(id=kwargs.get('id'))
     group.members.add(userprofile.objects.get(id=1))

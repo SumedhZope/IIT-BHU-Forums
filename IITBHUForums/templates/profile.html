@@ -10,23 +10,11 @@
     <div class="image">
         <img src={% static "img/profile.png" %} width="1000px" height="200px">
     </div>
-    <div class="bio">
-        <div class="name">
-            NAME : {{ u.username }}
-        </div>
-        <div class="edit">
-            <img src={%static "img/edit.png"%}>
-        </div>
-        <div class="fbio">
-            YOUR BIO
-            <div class="credits">
-                credits
-            </div>
-        </div>
+    <div class="name">
+        {{ u.username }}
     </div>
 </div>
 <div class="text-center">
-
     {% ifequal button_status "not_friend" %}
         <form id="AddFriend">
             {% csrf_token %}
@@ -54,15 +42,44 @@
     {% endifequal %}
 </div>
 <div class="groups_nav">
-    <div class="groups">
-        groups
+    <div class="tabs">
+        <div class="groups tablinks" id="defaultOpen" onclick="openTab(event,'groups_content')">
+            Groups
+        </div>
+        <div class="posts tablinks" onclick="openTab(event,'posts_content')">
+            Posts
+        </div>
+        <div class="friends tablinks" onclick="openTab(event,'friends_content')">
+            Friends
+        </div>
     </div>
-    <div class="gear">
-        <img src={%static 'img/settings.png' %} width="100px" height="100px">
+    <div class="content">
+        <div id="groups_content" class="tabcontent">
+            {% for group in groups %}
+                <div class="post-box"> 
+                    {{ group.name }}
+                    <br>
+                    {{post.title}}
+                </div>
+            {% endfor %}
+        </div>
+        <div id="posts_content" class="tabcontent">
+            {% for post in posts %}
+                <div class="post-box"> 
+                    {{post.user}} {{ post.group}}
+                    <br>
+                    {{post.title}}
+                </div>
+            {% endfor %}
+        </div>
+        <div id="friends_content" class="tabcontent">
+            {% for friend in friends %}
+                <div class="post-box"> 
+                    {{ friend }}
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-<div class="content">
-
 </div>
 
 {%endblock content%}
