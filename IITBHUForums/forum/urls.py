@@ -3,7 +3,6 @@ from django.urls import path,include
 from . import views
 urlpatterns = [
     path('feed/', views.feed, name="feed"),
-    path('testnav/', views.nav),
     path('profile/<int:id>/add_friend',views.send_friend_request),
     path('profile/<int:id>/accept_friend',views.accept_friend_request),
     path('profile/<int:id>/decline_friend',views.delete_friend_request),

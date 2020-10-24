@@ -6,8 +6,9 @@ from .models import Group,Post
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 
 def feed(request):
-    user = userprofile.objects.get(user=request.user)
-    for g in Group.objects.all():
+    user = Profile.objects.get(user=request.user)
+
+    for g in Group.objects.all(): #to be removed, when joining of group feature is added, done just for testing
         g.members.add(user)
 
     post_list = []
@@ -128,38 +129,7 @@ def friend_request(request, *args, **kwargs):
     }
     return render(request,'friend_requests.html',context)
 
-
-#def profile(request, *args, **kwargs):
-#    if request.method == 'POST':
-#        user = userprofile.objects.get(user=User.objects.get(id=kwargs.get('id')))
-#        user.friend.add(userprofile.objects.get(user=request.user))
-#        data = {
-#           'result' : 'success',
-#        }
-#        return JsonResponse(data)
-#    user = User.objects.get(id=kwargs.get('id'))
-#    user_profile = userprofile.objects.get(user=user)
-#    profile = userprofile.objects.get(user=request.user)
-#
-#    context = {
-#        'user' : user,
-#        'status' : 1,
-#    }
-#    is_friend = userprofile.objects.filter(friend=profile.id)
-#    print(is_friend)
-#    #if friends[user.username]:
-    #    context['status'] = 2
-#    return render(request,'profile.html',context)
-
 def add_member(request, *args, **kwargs):
-    group = Group.objects.get(id=1) #add group here
-    group.members.add(userprofile.objects.get(user=request.user))
+    group = Group.objects.get(id=1) 
+    group.members.add(Profile.objects.get(user=request.user))
     return HttpResponse("<h1> Done! <h1>")
-
-def group_list(request,*args,**kwargs):
-    group = Group.objects.get(id=kwargs.get('id'))
-    group.members.add(userprofile.objects.get(id=1))
-    context = {
-        'member' : group.members.all()
-    }
-    return render(request, 'member.html',  context)
