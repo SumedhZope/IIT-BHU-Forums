@@ -1,0 +1,13 @@
+{% extends 'base_navbar.html' %} {% block content %}
+<div>
+    <div class="icon">
+        <img src='/media/{{group.groupicon}}' alt="groupicon" style="width:320px; height:220px;">
+    </div>
+    <div class="des">
+        <span>{{group.name}}</span>
+        <p>{{group.description}}</p>
+        <p>{{group.created_at}}</p>
+        <p>{{group.user.username}}</p>
+    </div>
+</div>
+{% endblock %}

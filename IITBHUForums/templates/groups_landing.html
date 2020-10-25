@@ -1,4 +1,8 @@
-{% extends 'base_navbar.html' %} {%block body%}
+{% extends 'base_navbar.html' %} {%block content%}
 <a href="/groups/new_group">create new Group</a> {%for g in group %}
 <br>
-<div style="width: 100%; background-color: aqua;"><span>Name  : {{g.name}}</span> <br>icon : <img src='/media/{{g.groupicon}}' alt="groupicon" style="width:70px; height:70px;"></div> {% endfor %} {%endblock%}
+<a href='/group/{{g.id}}'>
+    <div style="width: 100%; background-color: aqua; color: black;"><span>Name  : {{g.name}}</span> <br>icon : <img src='/media/{{g.groupicon}}' alt="groupicon" style="width:70px; height:70px;">
+        <div>description : {{g.description}}</div>
+    </div>
+</a> {% endfor %} {%endblock content%}

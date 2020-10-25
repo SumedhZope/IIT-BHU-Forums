@@ -68,12 +68,13 @@ def make_post(request):
         now = datetime.datetime.now()
         title = request.POST['title']
         content = request.POST['content']
-        user = request.user
+        user = request.User
         #group = Group.objects.get(id=request.POST['group'])
 
         if title is not None and content is not None :
-            r = Post(title=title, content=content, created_at=now, user=user, group=group) 
+            r = Post(title=title, content=content, created_at=now, user=user) 
             r.save()
+            r.User.add(user)
     return render(request, 'make_post.html', context)
     
 def groups(request):
@@ -86,3 +87,9 @@ def groups(request):
 def profile(request):
     return render(request,'profile.html')
 
+def group_home(request, id):
+    group = Group.objects.get(id=id)
+    params = {
+        'group' : group
+    }
+    return render(request,'group_home.html',params)
