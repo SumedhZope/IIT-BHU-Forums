@@ -13,7 +13,6 @@
 }
 
 .chat-holder{
-    z-index: -1;
     border-style: solid;
     border-width: 2px;
     border-color: rgb(20, 245, 245);

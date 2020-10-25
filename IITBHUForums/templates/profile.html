@@ -26,7 +26,10 @@
                 {{ button_status }}
             </div>
             <br>
-            <button class="btn" onclick="openChat()">Chat</button>
+            <form id="openChat">
+                {% csrf_token %}
+                <button class="btn">Chat</button>
+            </form>
         {% endifnotequal %}
     {% endifequal %}
     <div id="Friends" style="display:none">

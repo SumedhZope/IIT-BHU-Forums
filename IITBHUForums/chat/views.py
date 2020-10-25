@@ -4,13 +4,14 @@ from django.views.generic import DetailView, ListView
 from django.http import HttpResponse
 from django.shortcuts import redirect,reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import Http404, HttpResponseForbidden
+from django.http import Http404, HttpResponseForbidden,JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic.edit import FormMixin
 from django.views.generic import DetailView, ListView
 from .forms import ComposeForm
 from .models import Thread, ChatMessage
+
 
 
 class ThreadView(LoginRequiredMixin, FormMixin, DetailView):
@@ -52,11 +53,17 @@ class ThreadView(LoginRequiredMixin, FormMixin, DetailView):
         return super().form_valid(form)
 
 def chatroom(request):
-    list_of_users = []
-    for x in Thread.objects.by_user(request.user):
-        if x.first != request.user:
-            list_of_users.append([x.first,Thread.objects.get_or_new(x.first,x.second)[0]])
-        else:
-            list_of_users.append([x.second,Thread.objects.get_or_new(x.first,x.second)[0]])
-        print(list_of_users[-1])
-    return render(request,'chatroom.html', {'list' : list_of_users})
+    if request.method == "POST":
+        data = {
+                'result' : 'success',
+        }
+        return JsonResponse(data)
+    else:
+        list_of_users = []
+        for x in Thread.objects.by_user(request.user):
+            if x.first != request.user:
+                list_of_users.append([x.first,Thread.objects.get_or_new(x.first,x.second)[0]])
+            else:
+                list_of_users.append([x.second,Thread.objects.get_or_new(x.first,x.second)[0]])
+            print(list_of_users[-1])
+        return render(request,'chatroom.html', {'list' : list_of_users})

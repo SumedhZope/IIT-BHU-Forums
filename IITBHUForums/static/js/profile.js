@@ -95,9 +95,24 @@ const openTab = (e, id_name) => {
     e.currentTarget.className += " active";
 }
 
-function openChat(){
-    console.log("Check");
-}
+$(document).on('submit','#openChat',function(e){
+    e.preventDefault();
+    $.ajax({
+        type : 'POST',
+        url : '/chatroom/',
+        data : {
+            csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
+        },
+        success:function(data){
+            if(data.result == 'success'){
+                
+            }
+        },
+        error:function() {
+            
+        }
+    });
+})
 
 document.getElementById("defaultOpen").click();
 
