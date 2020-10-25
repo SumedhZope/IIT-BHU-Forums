@@ -95,4 +95,9 @@ const openTab = (e, id_name) => {
     e.currentTarget.className += " active";
 }
 
+function openChat(){
+    console.log("Check");
+}
+
 document.getElementById("defaultOpen").click();
+

@@ -2,7 +2,10 @@
 {% load static %}
 {% block content %}
     <div class="post-box">
-        <p>{{ post.user }} {{ post.group }}</p>
+        <div class="heading">
+            <p>{{ post.user }} {{ post.group }}</p>
+            <a href="{% url 'feed' %}">Go back to feed</a>
+        </div>
         <div class="top">
             <p>{{ post.title }}</p>
             <p>{{ post.created_at }}</p>

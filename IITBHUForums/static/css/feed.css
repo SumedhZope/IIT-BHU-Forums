@@ -9,6 +9,12 @@
     margin-bottom: 5px;
 }
 
+.heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .post-box-post{
     background: #0a0525;
     border-radius: 10px;
@@ -17,6 +23,10 @@
     margin: auto;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.link-tag{
+    height: 0;
 }
 
 .top{
