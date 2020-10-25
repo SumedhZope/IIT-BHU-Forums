@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
 from Auth.models import Profile,Relationship,FriendRequest
-from .models import Group,Post
+from .models import Group,Post,like
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,JsonResponse
@@ -219,34 +219,61 @@ def make_post(request):
     return render(request, 'make_post.html', context)
 
 def post_view(request,*args,**kwargs):
+    print(request.POST)
     if request.method == 'POST':
-        now = datetime.datetime.now()
-        comment = request.POST['comment']
-        if comment is not None :
-            post = Post.objects.get(id=kwargs.get('id'))
-            c = Comments(user=request.user, comment=comment, created_at=now, post=post)
-            c.save()
+        if request.POST.get('comment'):
+            now = datetime.datetime.now()
+            comment = request.POST['comment']
+            if comment is not None :
+                post = Post.objects.get(id=kwargs.get('id'))
+                c = Comments(user=request.user, comment=comment, created_at=now, post=post)
+                c.save()
+                data = {
+                    'result' : 'success',
+                    'new_comment' : comment,
+                    'user' : request.user.username,
+                    'date' : now
+                }
+                return JsonResponse(data)
             data = {
-                'result' : 'success',
-                'new_comment' : comment,
-                'user' : request.user.username,
-                'date' : now
+                'result' : 'fail',
             }
             return JsonResponse(data)
-        data = {
-            'result' : 'fail',
-        }
-        return JsonResponse(data)
-        
+
+        if request.POST.get("like"):
+            if request.POST.get("like") == "create":
+                print("create")
+                data = {
+                    'result' : 'success',
+                }
+                new_like = like(user=request.user, post=Post.objects.get(id=kwargs.get('id')))
+                new_like.save()
+                print(like.objects.filter(user=request.user))
+                return JsonResponse(data)
+            else:
+                print("delete")
+                like_delete = like.objects.filter(post=Post.objects.get(id=kwargs.get('id')),user=request.user)
+                like_delete.delete()
+                data = {
+                    'result' : 'success',
+                }
+                return JsonResponse(data)
+
     post = Post.objects.get(id=kwargs.get('id'))
     comments = Comments.objects.filter(post=kwargs.get('id')).order_by('-created_at')
+    likes = like.objects.filter(post=post)
+
+    status = 0
+    if likes.filter(user=request.user):
+        status = 1
+
     num_comments = comments.count()
-    for comment in comments:
-        print(comment.created_at)
     context = {
         'post' : post,
         'comments' : comments,
         'num' : num_comments,
+        'num_likes' : likes.count(),
+        'status_like' : status
     }
     return render(request, 'post_view.html', context)
   

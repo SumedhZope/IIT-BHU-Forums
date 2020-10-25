@@ -13,6 +13,10 @@
         {{ post.content }}
         <br>
         <div class="div-line"></div><br>
+        <div class="like">
+            <div id="like_btn"class="{% ifequal status_like 1%}like-active{% endifequal %}">Like</div>
+            <div class="like-count"><div>Likes-></div><div id="likes_num">{{ num_likes }}</div></div>
+        </div><br>
         <div class="comment-head"><div>comments</div><div id="left_bracket">(</div><div id="num">{{ num }}</div><div>)</div></div><br>
         <form id="comment_form" autocomplete="off">
             {%csrf_token%}

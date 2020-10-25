@@ -34,3 +34,9 @@ class Comments(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     def __str__(self):
         return self.comment
+
+class like(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
+    def __str__(self):
+        return "by {} on {}".format(self.user,self.post)

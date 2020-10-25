@@ -31,3 +31,36 @@ $(document).on('submit','#comment_form', function(e){
         }
     });
 });
+
+const like_btn = () => {
+    btn = document.getElementById('like_btn');
+    console.log(btn)
+    num = document.getElementById("likes_num")
+    btn.addEventListener('click', e =>{
+        if(btn.classList.contains("like-active")){
+            num.innerHTML = parseInt(num.innerHTML) - 1;
+            btn.classList.remove("like-active")
+            $.ajax({
+                type : 'POST',
+                url : window.location.href,
+                data : {
+                    csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val(),
+                    like : "delete"
+                }
+            });
+        }
+        else{
+            num.innerHTML = parseInt(num.innerHTML) + 1;
+            btn.classList.add("like-active")
+            $.ajax({
+                type : 'POST',
+                url : window.location.href,
+                data : {
+                    csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val(),
+                    like : "create"
+                }
+            });
+        }
+    });
+}
+like_btn();
