@@ -30,5 +30,4 @@ def chatroom(request, *args, **kwargs):
             list_of_users.append([x.first,Thread.objects.get_or_new(x.first,x.second)[0]])
         else:
             list_of_users.append([x.second,Thread.objects.get_or_new(x.first,x.second)[0]])
-        print(list_of_users[-1])
     return render(request,'chatroom.html', {'list' : list_of_users, 'id' : request.session['id'], 'username' : User.objects.get(id=request.session['id']).username})
