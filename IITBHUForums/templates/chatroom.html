@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 {% endblock js %}
 {% block content %}
+        <div id="{% if id %}preset{% endif %}" class="{{id}} {{username}}"></div>
             <div class="container d-flex pt-5">
                 <div class="col-3 text-center">
                     {% for person in list %}

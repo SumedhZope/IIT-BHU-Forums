@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('chatroom/', chatView.chatroom),
+    path('chatroom/', chatView.chatroom, name = "chatroom"),
     path('chat/', include('chat.urls')),
     path('',include('forum.urls')),
     path('',include('Auth.urls')),

@@ -26,8 +26,7 @@
                 {{ button_status }}
             </div>
             <br>
-            <form id="openChat">
-                {% csrf_token %}
+            <form id="openChat" class="{{ u.username }}">
                 <button class="btn">Chat</button>
             </form>
         {% endifnotequal %}

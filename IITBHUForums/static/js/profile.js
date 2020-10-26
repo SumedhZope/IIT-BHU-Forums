@@ -97,21 +97,7 @@ const openTab = (e, id_name) => {
 
 $(document).on('submit','#openChat',function(e){
     e.preventDefault();
-    $.ajax({
-        type : 'POST',
-        url : '/chatroom/',
-        data : {
-            csrfmiddlewaretoken : $('input[name=csrfmiddlewaretoken]').val()
-        },
-        success:function(data){
-            if(data.result == 'success'){
-                
-            }
-        },
-        error:function() {
-            
-        }
-    });
+    window.location.href = '/chat/' + document.getElementById('openChat').classList[0]
 })
 
 document.getElementById("defaultOpen").click();

@@ -1,5 +1,7 @@
 $(document).ready(function(){
     resposive();
+    preset();
+    setting();
 });
 
 function resposive(){
@@ -59,9 +61,6 @@ Array.from(btn).forEach(element => {
 
 });
 
-
-
-
 function switch_chat(p){
     var s = p.id.slice(0,-5) + "-chats";
     $('.chats').css({'display':'none'});
@@ -70,4 +69,16 @@ function switch_chat(p){
     $('#'+p.id).css({'background-color':'#222831'});
     $('#'+p.id).css({'':''});
     $('#'+p.id).css({'':''});
+}
+
+function preset(){
+    pre = document.getElementById('preset');
+    document.getElementById(pre.classList[1] + "-name").click();
+}
+
+function setting(){
+    chat_boxes = document.getElementsByClassName('chat-holder');
+    Array.from(chat_boxes).forEach(e =>{
+        e.scrollTop = e.scrollHeight;
+    });
 }
