@@ -17,7 +17,6 @@ Array.from(btn).forEach(element => {
     const inputElement = document.getElementById(id_main + '-input')
     const formData = document.getElementById(id_main + '-form')
     var loc = window.location
-    console.log(loc)
     var wsStart = 'ws://'
     var chatHolder = $('#'+id_main+'-chat-holder')
     var me = $('#myUsername').val()
@@ -73,11 +72,16 @@ function switch_chat(p){
 
 function preset(){
     pre = document.getElementById('preset');
-    document.getElementById(pre.classList[1] + "-name").click();
+    console.log(pre);
+    if(pre != null){
+        document.getElementById(pre.classList[1] + "-name").click();
+    }
 }
 
 function setting(){
+    console.log("test2");
     chat_boxes = document.getElementsByClassName('chat-holder');
+    console.log(chat_boxes)
     Array.from(chat_boxes).forEach(e =>{
         e.scrollTop = e.scrollHeight;
     });

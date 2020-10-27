@@ -30,4 +30,9 @@ def chatroom(request, *args, **kwargs):
             list_of_users.append([x.first,Thread.objects.get_or_new(x.first,x.second)[0]])
         else:
             list_of_users.append([x.second,Thread.objects.get_or_new(x.first,x.second)[0]])
-    return render(request,'chatroom.html', {'list' : list_of_users, 'id' : request.session['id'], 'username' : User.objects.get(id=request.session['id']).username})
+    if 'id' in request.session.keys():
+        return render(request,'chatroom.html', {'list' : list_of_users, 'id' : request.session['id'], 'username' : User.objects.get(id=request.session['id']).username})
+    if list_of_users[0]:
+        return render(request,'chatroom.html', {'list' : list_of_users, 'id' : list_of_users[0][0].id, 'username' : list_of_users[0][0].username})
+    else:
+        return render(request,'chatroom.html', {'list' : list_of_users})
