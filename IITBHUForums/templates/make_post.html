@@ -1,7 +1,11 @@
 {% load static %}
 <html>
-<body style="background-color:#5b6577; ">
+<body>
     <style>
+        body {
+             background-image: url("{% static '/img/bg.jpg' %}");
+             background-size: 100% 100%;
+        }
         .grp1{
             color:black;
             text-align:center;
@@ -46,15 +50,11 @@
     </style>
     <form method="POST">
         {%csrf_token%}
-        <center><img src="{% static '/img/post-removebg-preview.png' %}" style="width: 24%; height:30%;"></img></center>
+        <center><img src="{% static '/img/post-removebg-preview.png' %}" style="width: 18%; height:20%;"></img></center>
         <h1 class="hd">Create post</h1>
-        <select class="grp1" name="group">
-            {% for group in groups %}
-            <option value={{ group.id }}> {{ group.name }}</option>
-            {% endfor %}
-        </select>
-        <input class="grp1" name="title" type="text" placeholder="title">
-        <input class="grp2" name="content" type="text" placeholder="Content">
+      
+        <input class="grp1" name="title" type="text" placeholder=Title>
+        <input class="grp2" name="content" type="text" placeholder="What's on your mind ?">
         <input class="grp3" name="submit" type="submit">
     </form>
 </body>
