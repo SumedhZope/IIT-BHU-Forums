@@ -2,10 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from . import views
 from .models import Group
-group=Group.objects.all()
-params={
-    'group': group
-}
+
 urlpatterns = [
     path('testnav/', views.nav, name='navbar'),
     path('groups/new_group/',views.submit_form,name="new_group"),

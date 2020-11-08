@@ -1,5 +1,7 @@
+alert(2);
 $(document).on('submit', '#submit', function(e) {
     e.preventDefault();
+    alert(1);
     var formData = new FormData(this);
     console.log(formData);
     $.ajax({
@@ -11,14 +13,18 @@ $(document).on('submit', '#submit', function(e) {
         processData: false,
         success: function(data) {
             if (data.result == 'success') {
-                window.location.href = '..';
+                window.location.href = '/groups/';
             } else {
-                // $('#new_group_error').css({ 'display': 'block' });
                 $('#new_group_error').html(data.message);
             }
         },
         error: function() {
-            contact_right_message_sent.text('Sorry! Something went wrong.')
+            contact_right_message_sent.text('Sorry! Something went wrong.');
         }
     });
 });
+
+//function file() {
+//  console.log($('#g_file').val());
+// var x = $('#g_file').val();
+//}
