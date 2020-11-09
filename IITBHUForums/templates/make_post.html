@@ -8,7 +8,7 @@
         }
         .grp1{
             color:black;
-            text-align:center;
+            text-align:left;
             width:40%;
             margin-left:30%;
             margin-right:30%;
@@ -19,7 +19,7 @@
         }
         .grp2{
             color:black;
-            text-align:center;
+            vertical-align: top;
             width:40%;
             margin-left:30%;
             margin-right:30%;
@@ -27,6 +27,7 @@
             height:35%;
             min-height:25px;
             max-height:200px;
+
     
         }
         .grp3{
@@ -35,8 +36,8 @@
             height:15%;
             min-height:25px;
             max-height:50px;
-            width:20%;
-            margin-left:40%;
+            width:10%;
+            margin-left:45%;
             margin-right:40%;
             margin-top: 2%;
             margin-bottom: 2%;
@@ -47,6 +48,8 @@
             font-size: 50px;
             text-align:center;
         }
+        .button {border-radius: 12px;}
+
     </style>
     <form method="POST">
         {%csrf_token%}
@@ -54,8 +57,10 @@
         <h1 class="hd">Create post</h1>
       
         <input class="grp1" name="title" type="text" placeholder=Title>
-        <input class="grp2" name="content" type="text" placeholder="What's on your mind ?">
-        <input class="grp3" name="submit" type="submit">
+        <textarea name="content" class="grp2" required placeholder="What's on your mind ?"></textarea>
+        <!--<textarea placeholder="What's on your mind ?" maxlength="100" name="how" id="how"></textarea>
+        <input class="grp2" name="content" type="textarea" placeholder="What's on your mind ?">-->
+        <input class="grp3 button" name="submit" type="submit">
     </form>
 </body>
 
