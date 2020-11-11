@@ -57,6 +57,11 @@
         <h1 class="hd">Create post</h1>
       
         <input class="grp1" name="title" type="text" placeholder=Title>
+        <select class="grp1" name="group">
+            {% for group in groups %}
+            <option value={{ group.id }}> {{ group.name }}</option>
+            {% endfor %}
+        </select>
         <textarea name="content" class="grp2" required placeholder="What's on your mind ?"></textarea>
         <!--<textarea placeholder="What's on your mind ?" maxlength="100" name="how" id="how"></textarea>
         <input class="grp2" name="content" type="textarea" placeholder="What's on your mind ?">-->

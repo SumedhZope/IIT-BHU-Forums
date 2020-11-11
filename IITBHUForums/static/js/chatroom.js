@@ -31,6 +31,7 @@ Array.from(btn).forEach(element => {
         console.log('msg')
         var chatDataMsg = JSON.parse(e.data)
             if(chatDataMsg.message != ''){
+                console.log('process')
                 chatHolder.append("<li>" + chatDataMsg.message + " via - " + chatDataMsg.username +  "</li>")
             }
     }

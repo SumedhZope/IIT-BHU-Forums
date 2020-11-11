@@ -228,7 +228,7 @@ def make_post(request):
         group = Group.objects.get(id=request.POST['group'])
 
         if title is not None and content is not None :
-            r = Post(title=title, content=content, created_at=now, user=user) 
+            r = Post(title=title, content=content, created_at=now, user=user, group=group) 
             r.save()
             return redirect(reverse('post_view',kwargs={
                     'id' : r.id
