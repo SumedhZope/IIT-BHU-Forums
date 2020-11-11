@@ -56,6 +56,13 @@ window.onclick = function(event){
     }
 }
 
+const validateForm = () => {
+    const input = document.getElementById('search_bar');
+    const form = document.getElementById('search_form')
+    if(input.value.length == 0){
+        return false;
+    }
+}
 const process = () =>{
     navSlide();
     dropdownUser();

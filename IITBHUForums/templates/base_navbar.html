@@ -34,7 +34,7 @@
         </ul>
         <div class="fake-image">
             <div class="search">
-                <input class="search-input" type="text" style="background-color: #11161D;" placeholder="Search">
+                <form id="search_form" onsubmit="return validateForm()" method="GET"><input id="search_bar" class="search-input" type="text" style="background-color: #11161D;" placeholder="Search" name="q"></form>
                 <img class="search-image" style="background-color: #11161D;" src="{% static 'img/search.png'%}">
             </div>
         </div>
@@ -50,6 +50,7 @@
     </div>
     {%block content%} {%endblock content%}
 </body>
+<script src="{% static 'js/search.js'%}"></script>
 <script src="{% static 'js/navbar.js'%}"></script>
 {%block js%}{%endblock js%}
 </html>

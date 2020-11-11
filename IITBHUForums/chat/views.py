@@ -21,9 +21,8 @@ def ThreadView(request,*args,**kwargs):
     if obj == None:
         raise Http404
     return redirect("chatroom")
-
-
-def chatroom(request, *args, **kwargs):
+  
+def chatroom(request):
     list_of_users = []
     for x in Thread.objects.by_user(request.user):
         if x.first != request.user:
@@ -36,3 +35,4 @@ def chatroom(request, *args, **kwargs):
         return render(request,'chatroom.html', {'list' : list_of_users, 'id' : list_of_users[0][0].id, 'username' : list_of_users[0][0].username})
     else:
         return render(request,'chatroom.html', {'list' : list_of_users})
+    return render(request,'chatroom.html', {'list' : list_of_users})

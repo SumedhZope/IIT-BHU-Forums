@@ -67,7 +67,6 @@ class ChatConsumer(AsyncConsumer):
 
     @database_sync_to_async
     def create_chat_message(self, me, msg):
-        print("create")
         thread_obj = self.thread_obj
         return ChatMessage.objects.create(thread=thread_obj, user= me, message=msg)
     

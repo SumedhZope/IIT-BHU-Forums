@@ -25,6 +25,7 @@
                             <div id='{{ person.0 }}-chat-holder'>
                                 {% for chat in  person.1.chatmessage_set.all %}
                                     <li class="messages">{{ chat.message }} via {{ chat.user }}</li>
+                                    <li>{{ chat.message }} via {{ chat.user }}</li>
                                 {% endfor %}
                             </div>
                             <form method="POST" id="{{ person.0 }}-form">
