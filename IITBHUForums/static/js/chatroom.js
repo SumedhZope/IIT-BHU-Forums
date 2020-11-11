@@ -1,5 +1,7 @@
 $(document).ready(function(){
     resposive();
+    preset();
+    setting();
 });
 
 function resposive(){
@@ -15,7 +17,6 @@ Array.from(btn).forEach(element => {
     const inputElement = document.getElementById(id_main + '-input')
     const formData = document.getElementById(id_main + '-form')
     var loc = window.location
-    console.log(loc)
     var wsStart = 'ws://'
     var chatHolder = $('#'+id_main+'-chat-holder')
     var me = $('#myUsername').val()
@@ -59,9 +60,6 @@ Array.from(btn).forEach(element => {
 
 });
 
-
-
-
 function switch_chat(p){
     var s = p.id.slice(0,-5) + "-chats";
     $('.chats').css({'display':'none'});
@@ -70,4 +68,21 @@ function switch_chat(p){
     $('#'+p.id).css({'background-color':'#222831'});
     $('#'+p.id).css({'':''});
     $('#'+p.id).css({'':''});
+}
+
+function preset(){
+    pre = document.getElementById('preset');
+    console.log(pre);
+    if(pre != null){
+        document.getElementById(pre.classList[1] + "-name").click();
+    }
+}
+
+function setting(){
+    console.log("test2");
+    chat_boxes = document.getElementsByClassName('chat-holder');
+    console.log(chat_boxes)
+    Array.from(chat_boxes).forEach(e =>{
+        e.scrollTop = e.scrollHeight;
+    });
 }

@@ -1,3 +1,4 @@
+console.log('ready')
 $(document).on('submit', '#submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);

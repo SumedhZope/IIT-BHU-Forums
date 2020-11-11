@@ -272,6 +272,7 @@ img {
 }
 
 .dropdown{
+    z-index: 2;
     opacity: 0;
     display: block;
     position: absolute;
@@ -281,6 +282,7 @@ img {
 }
 
 .dropdown-content{
+    z-index: 2;
     display: block;
     background-color:#222831;
     width: 200px;
@@ -370,9 +372,6 @@ img {
 
 
 @media (max-width:768px){
-    body{
-        overflow-y: hidden;
-    }
 
     .base_navbar .ul-1{
         position: absolute;
