@@ -1,0 +1,9 @@
+{% extends "base_navbar.html" %}
+
+{% block content %}
+    {% for person in friends %}
+        {{ person }}
+    {% endfor %}
+</ul>
+
+{% endblock %}

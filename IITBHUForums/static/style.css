@@ -272,7 +272,8 @@ img {
     transition: transform 0.3s ease-in;
 }
 
-.dropdown {
+.dropdown{
+    z-index: 2;
     opacity: 0;
     display: block;
     position: absolute;
@@ -281,7 +282,8 @@ img {
     transition: all 0.5s;
 }
 
-.dropdown-content {
+.dropdown-content{
+    z-index: 2;
     display: block;
     background-color: #222831;
     width: 200px;
@@ -370,11 +372,9 @@ img {
     cursor: pointer;
 }
 
-@media (max-width:768px) {
-    body {
-        overflow-y: hidden;
-    }
-    .base_navbar .ul-1 {
+@media (max-width:768px){
+
+    .base_navbar .ul-1{
         position: absolute;
         display: flex;
         flex-direction: column;

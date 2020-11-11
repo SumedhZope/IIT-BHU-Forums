@@ -1,0 +1,22 @@
+{% extends "base_navbar.html" %}
+{% load static %}
+{% block content %}
+    {% for post in posts %}
+        <div class="post-box">
+            <div class="heading">
+                <p>{{ post.user }} {{ post.group }}</p>
+                <a href={{ post.get_abs_url }} class="link-tag">View full post</a>
+            </div>
+            <div class="top">
+                <p>{{ post.title }}</p>
+                <p>{{ post.created_at }}</p>
+            </div>
+            {{ post.content }}
+            <br>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static 'css/feed.css' %} />
+{% endblock css %}

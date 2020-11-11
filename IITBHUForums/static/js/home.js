@@ -6,7 +6,7 @@ $(window).resize(function(){
 });
 
 function resposive(){
-    var h = $(window).height()-$('.header').height()-$('.front').height();
+    var h = $(window).height()-$('.base_navbar').height()-$('.front').height();
     h /= 2;
     $('.front').css({'padding-top':h+'px'});
 }
@@ -29,7 +29,7 @@ $(document).on('submit','#register-form-id', function(e){
         },
         success:function(data){
             if(data.result == 'success'){
-                window.location.href = 'testnav/';
+                window.location.href = 'feed/';
             }else{
                 $('#register_error').css({'display':'block'});
                 $('#register_error').html(data.message);
@@ -56,7 +56,7 @@ $(document).on('submit','#login-form-id', function(e){
         },
         success:function(data){
             if(data.result == 'success'){
-                window.location.href = 'testnav/';
+                window.location.href = 'feed/';
             }else{
                 $('#login_error').css({'display':'block'});
             }

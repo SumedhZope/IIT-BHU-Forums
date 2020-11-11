@@ -1,0 +1,45 @@
+{% extends "base_navbar.html" %}
+{% load static %}
+{% block content %}
+    <div class="post-box">
+        <div class="heading">
+            <p>{{ post.user }} {{ post.group }}</p>
+            <a href="{% url 'feed' %}">Go back to feed</a>
+        </div>
+        <div class="top">
+            <p>{{ post.title }}</p>
+            <p>{{ post.created_at }}</p>
+        </div>
+        {{ post.content }}
+        <br>
+        <div class="div-line"></div><br>
+        <div class="like">
+            <div id="like_btn"class="{% ifequal status_like 1%}like-active{% endifequal %}">Like</div>
+            <div class="like-count"><div>Likes-></div><div id="likes_num">{{ num_likes }}</div></div>
+        </div><br>
+        <div class="comment-head"><div>comments</div><div id="left_bracket">(</div><div id="num">{{ num }}</div><div>)</div></div><br>
+        <form id="comment_form" autocomplete="off">
+            {%csrf_token%}
+            <input id="new_comment" name="comment" type="text" placeholder="Your comment">
+        </form>
+        <div id="comments">
+            {% for comment in comments %}
+                {{ request.user }} said : <br>
+                {{ comment }}<br><br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static 'css/feed.css' %} />
+{% endblock css %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+    <script src={% static 'js/post_view.js' %}></script>
+{% endblock js %}

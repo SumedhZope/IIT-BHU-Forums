@@ -1,7 +1,5 @@
-alert(2);
 $(document).on('submit', '#submit', function(e) {
     e.preventDefault();
-    alert(1);
     var formData = new FormData(this);
     console.log(formData);
     $.ajax({

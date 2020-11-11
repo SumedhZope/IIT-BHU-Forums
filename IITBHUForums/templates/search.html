@@ -1,0 +1,24 @@
+{% extends "base_navbar.html" %}
+
+{% block content %}
+    <div>
+            <div id="group-btn"> Groups </div>
+            <div id="post-btn"> Posts </div>
+            <div id="user-btn"> Users </div>
+            <div id="group-list">
+                {% for group in groups %}
+                {{ group }}<br>
+                {% endfor %}
+            </div>
+            <div id="post-list">
+                {% for post in posts %}
+                {{ post }}<br>
+                {% endfor %}
+            </div>
+            <div id="user-list">
+                {% for user in users %}
+                {{ user }}<br>
+                {% endfor %}
+            </div>
+    </div>
+{% endblock content %}
