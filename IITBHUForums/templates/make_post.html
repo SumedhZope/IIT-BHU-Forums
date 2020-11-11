@@ -1,10 +1,14 @@
 {% load static %}
 <html>
-<body style="background-color:#5b6577; ">
+<body>
     <style>
+        body {
+             background-image: url("{% static '/img/bg.jpg' %}");
+             background-size: 100% 100%;
+        }
         .grp1{
             color:black;
-            text-align:center;
+            text-align:left;
             width:40%;
             margin-left:30%;
             margin-right:30%;
@@ -15,7 +19,7 @@
         }
         .grp2{
             color:black;
-            text-align:center;
+            vertical-align: top;
             width:40%;
             margin-left:30%;
             margin-right:30%;
@@ -23,6 +27,7 @@
             height:35%;
             min-height:25px;
             max-height:200px;
+
     
         }
         .grp3{
@@ -31,8 +36,8 @@
             height:15%;
             min-height:25px;
             max-height:50px;
-            width:20%;
-            margin-left:40%;
+            width:10%;
+            margin-left:45%;
             margin-right:40%;
             margin-top: 2%;
             margin-bottom: 2%;
@@ -43,19 +48,19 @@
             font-size: 50px;
             text-align:center;
         }
+        .button {border-radius: 12px;}
+
     </style>
     <form method="POST">
         {%csrf_token%}
-        <center><img src="{% static '/img/post-removebg-preview.png' %}" style="width: 24%; height:30%;"></img></center>
+        <center><img src="{% static '/img/post-removebg-preview.png' %}" style="width: 18%; height:20%;"></img></center>
         <h1 class="hd">Create post</h1>
-        <select class="grp1" name="group">
-            {% for group in groups %}
-            <option value={{ group.id }}> {{ group.name }}</option>
-            {% endfor %}
-        </select>
-        <input class="grp1" name="title" type="text" placeholder="title">
-        <input class="grp2" name="content" type="text" placeholder="Content">
-        <input class="grp3" name="submit" type="submit">
+      
+        <input class="grp1" name="title" type="text" placeholder=Title>
+        <textarea name="content" class="grp2" required placeholder="What's on your mind ?"></textarea>
+        <!--<textarea placeholder="What's on your mind ?" maxlength="100" name="how" id="how"></textarea>
+        <input class="grp2" name="content" type="textarea" placeholder="What's on your mind ?">-->
+        <input class="grp3 button" name="submit" type="submit">
     </form>
 </body>
 

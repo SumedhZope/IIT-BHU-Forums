@@ -15,6 +15,7 @@ from django.http import HttpResponse,JsonResponse
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from PIL import Image
 
 def feed(request):
     user = Profile.objects.get(user=request.user)
@@ -173,7 +174,7 @@ def nav(request):
 
 def submit_form(request):
     def checkextenstion(s):
-        allextension =[".jpg", '.jpeg', '.jpe','.jif', '.jfif', '.jfi',  '.png', '.gif' ,'.webp' , '.tiff', '.tif' , '.psd' , '.raw', '.arw', '.cr2', '.nrw', '.k25' ,'.bmp', '.dib' ,'.heif', '.heic' ,'.ind', '.indd', '.indt' ,'.jp2', '.j2k','.jpf', '.jpx', '.jpm', '.mj2', '.svg', '.svgz' ,'.ai','.eps']
+        allextension =[".jpg", '.jpeg', '.jpe','.jif', '.jfif', '.jfi',  '.png', '.gif' ,'.webp' , '.tiff', '.tif' , '.psd' , '.raw', '.arw', '.cr2', '.nrw', '.k25' ,'.bmp', '.dib' ,'.heif', '.heic' ,'.ind', '.indd', '.indt' ,'.jp2', '.j2k','.jpf', '.jpx', '.jpm', '.mj2', '.svg', '.svgz' ,'.ai','.eps','.html']
         for xtenstion in allextension:
             if s.endswith(xtenstion):
                 return False
@@ -192,14 +193,14 @@ def submit_form(request):
                 'message' : 'Group name had a length limitation of 3 to 50 characters',
             }
             return JsonResponse(data)
-        elif len(description)>120 :
+        elif len(description)>120 or len(description)<3:
             data ={
                 'result' : 'error',
                 'target' : 'Group Description',
                 'message' : 'Group discription has a limitation 120 characters',
             }
             return JsonResponse(data)
-        elif checkextenstion(g_icon.name):
+        elif checkextenstion(g_icon.name) and g_icon.name is not None:
             data ={
                 'result' : 'error',
                 'target' : 'Group Icon',
@@ -207,7 +208,7 @@ def submit_form(request):
             }
             return JsonResponse(data)
         elif name is not None and description is not None:
-            r = Group(name=name,description=description,groupicon= g_icon,created_at=now, user=request.user)
+            r = Group(name=name,description=description,groupicon= g_icon,created_at=now, user=request.user,likes=0)
             r.save()
             data = {
                 'result' : 'success',
@@ -227,7 +228,7 @@ def make_post(request):
         group = Group.objects.get(id=request.POST['group'])
 
         if title is not None and content is not None :
-            r = Post(title=title, content=content, created_at=now, user=user, group=group) 
+            r = Post(title=title, content=content, created_at=now, user=user) 
             r.save()
             return redirect(reverse('post_view',kwargs={
                     'id' : r.id
@@ -299,3 +300,28 @@ def groups(request):
         'group' : group
     }
     return render(request,'groups_landing.html',params)
+  
+def group_home(request, id):
+    group = Group.objects.get(id=id)
+    if request.method == "POST":
+        likes = int(request.POST.get('like'))
+        print(likes)
+        group.likes = likes
+        if request.POST.get('val') == 'inc':
+            group.liked_by.add(request.user)
+        else :
+            group.liked_by.remove(request.user)
+        group.save()
+    x = Group.objects.filter(liked_by=request.user,id = id)
+    params ={}
+    if x :
+        params = {
+        'group' : group,
+        'liked' : True,
+        }
+    else :
+        params = {
+        'group' : group,
+        'liked' : False,
+        }
+    return render(request,'group_home.html',params)

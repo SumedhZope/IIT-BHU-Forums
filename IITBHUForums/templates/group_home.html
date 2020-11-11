@@ -1,0 +1,76 @@
+{% extends 'base_navbar.html' %} {%load static%} {%block js%}
+<script src="{% static 'js/group_home.js'%}">
+</script>
+{%endblock js%} {% block content %}
+<style>
+    .uperwalacard {
+        margin: 30px 2%;
+        width: 96%;
+        height: 30vh;
+    }
+    
+    .upper_left {
+        float: left;
+        height: 100%;
+    }
+    
+    .upper_right {
+        float: right;
+        width: auto;
+        height: 100%;
+        color: #8ec1bf;
+        background-color: #222831;
+        padding: 10px 15px;
+    }
+    
+    .des {
+        width: 50%;
+        height: 50%;
+        float: left;
+    }
+    
+    .rightKaright {
+        float: right;
+        width: 50%;
+        height: 100%;
+        position: relative;
+    }
+    
+    .follow {
+        text-align: center;
+        margin: 10px;
+    }
+    
+    h4 h3 {
+        display: inline;
+    }
+</style>
+<div class='uperwalacard'>
+    <div class='upper_left'>
+        <img src='/media/{{group.groupicon}}' alt="groupicon" class='imgGroup' style="height: 100%; width: auto;">
+    </div>
+    <div class='upper_right'>
+        <div style='width: 50%; float:left;'>
+            <h1 style='width: 50%;'>{{group.name}}</h1>
+        </div>
+        <div class="rightKaright">
+            <div class='follow'>
+                <span style='font-size: 22px; font-weight: bold;'>20&ensp;</span><span style='font-size: 14px;'>Post&ensp;</span>
+                <span style='font-size: 22px; font-weight: bold;'> 20&ensp;</span><span style='font-size: 14px;'>Members&ensp;</span>
+                <span style='font-size: 22px; font-weight: bold;' id='no_likes'> {{group.likes}}</span><span style='font-size: 14px;'>&ensp;Liked&ensp;</span>
+            </div>
+            <div style='position: absolute; 
+            bottom: 0;
+            right:0;'>
+                {%csrf_token%} {%if not liked %}
+                <img src='{%static "img/heart.png"%}' id='like' style='width: 37px;height:auto;' onclick="liked()"> {%else%}
+                <img src='{%static "img/liked.png"%}' id='like' style='width: 37px;height:auto;' onclick="liked()"> {%endif%}
+            </div>
+        </div>
+        <div class='des'>
+            <p id='p_des'>{{group.description}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

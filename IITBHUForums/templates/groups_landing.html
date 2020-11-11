@@ -1,4 +1,42 @@
-{% extends 'base_navbar.html' %} {%block body%}
-<a href="/groups/new_group">create new Group</a> {%for g in group %}
-<br>
-<div style="width: 100%; background-color: aqua;"><span>Name  : {{g.name}}</span> <br>icon : <img src='/media/{{g.groupicon}}' alt="groupicon" style="width:70px; height:70px;"></div> {% endfor %} {%endblock%}
+{% extends 'base_navbar.html' %}{%load static%} {%block content%}
+<style>
+    .card {
+        background-color: #222831;
+        float: left;
+        margin-top: auto;
+        display: flex;
+        margin: 15px 10px;
+    }
+    
+    .create_group {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background-color: cadetblue;
+        border-radius: 50%;
+        margin: 15px 15px;
+    }
+</style>
+<div onclick='window.location.href="/groups/new_group"' class='create_group'>
+    <img src='{% static "/img/createGroup.png"%}' style='width: 75px;height: auto;'>
+</div> {%for g in group %}
+
+<!--a href='/group/{{g.id}}'>
+    <div style="width: 100%; background-color: aqua; color: black;"><span>Name  : {{g.name}}</span> <br>icon : <img src='/media/{{g.groupicon}}' alt="groupicon" style="width:70px; height:70px;">
+        <div>description : {{g.description}}</div>
+    </div>
+</a-->
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="/media/{{g.groupicon}}" alt="Card image cap" style="height:200px;width: auto;" onclick="window.location.href = '/group/{{g.id}}';">
+    <div class="card-body">
+        <h5 class="card-title" onclick="window.location.href = '/group/{{g.id}}';">{{g.name}}</h5>
+        <p class="card-text" onclick="window.location.href = '/group/{{g.id}}';">{{g.description}}</p>
+        <a href="#" class="btn btn-primary" style='color: black;background-color: #8EC1BF;'>Join</a>
+    </div>
+</div>
+
+{% endfor %} {%endblock content%} {%block js%}
+<script src="{% static 'js/group_landing.js'%}">
+</script>
+{%endblock js%}
