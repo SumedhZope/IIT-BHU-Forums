@@ -1,30 +1,15 @@
-const group_btn = document.getElementById('group-btn')
-const post_btn = document.getElementById('post-btn')
-const user_btn = document.getElementById('user-btn')
-const group_list = document.getElementById('group-list')
-const post_list = document.getElementById('post-list')
-const user_list = document.getElementById('user-list')
+const openTab = (e, id_name) => {
+    tabContent = document.getElementsByClassName("tabcontent");
 
-console.log(group_list)
+    for(i = 0;i<tabContent.length;i++){
+        tabContent[i].style.display = "none"; 
+    }
 
-group_list.style.visibility = "visible";
-post_list.style.visibility = "hidden";
-user_list.style.visibility = "hidden";
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
 
-group_btn.addEventListener('click', e => {
-    group_list.style.visibility = "visible";
-    post_list.style.visibility = "hidden";
-    user_list.style.visibility = "hidden";
-})
-
-post_btn.addEventListener('click', e => {
-    group_list.style.visibility = "hidden";
-    post_list.style.visibility = "visible";
-    user_list.style.visibility = "hidden";
-})
-
-user_btn.addEventListener('click', e => {
-    group_list.style.visibility = "hidden";
-    post_list.style.visibility = "hidden";
-    user_list.style.visibility = "visible";
-})
+    document.getElementById(id_name).style.display = "block";
+    e.currentTarget.className += " active";
+}

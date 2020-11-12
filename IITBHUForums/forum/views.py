@@ -16,6 +16,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from PIL import Image
+from Auth.models import Profile
 
 def feed(request):
     user = Profile.objects.get(user=request.user)
@@ -210,6 +211,7 @@ def submit_form(request):
         elif name is not None and description is not None:
             r = Group(name=name,description=description,groupicon= g_icon,created_at=now, user=request.user,likes=0)
             r.save()
+            request.user.profile.group_set.add(r)
             data = {
                 'result' : 'success',
             }

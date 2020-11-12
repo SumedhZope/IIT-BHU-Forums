@@ -1,24 +1,49 @@
 {% extends "base_navbar.html" %}
+{% load static %} 
+
+{%block css%}
+<link rel="stylesheet" href={% static 'css/profile.css' %} />
+{%endblock css%}
 
 {% block content %}
-    <div>
-            <div id="group-btn"> Groups </div>
-            <div id="post-btn"> Posts </div>
-            <div id="user-btn"> Users </div>
-            <div id="group-list">
+    <div class="groups_nav">
+        <div class="tabs">
+            <div class="groups tablinks" id="defaultOpen" onclick="openTab(event,'groups_content')">
+                Groups
+            </div>
+            <div class="posts tablinks" onclick="openTab(event,'posts_content')">
+                Posts
+            </div>
+            <div class="friends tablinks" onclick="openTab(event,'friends_content')">
+                Friends
+            </div>
+        </div>
+        <div class="content">
+            <div id="groups_content" class="tabcontent">
                 {% for group in groups %}
-                {{ group }}<br>
+                    <div class="post-box-post"> 
+                        {{ group.name }}
+                        <br>
+                        {{post.title}}
+                    </div>
                 {% endfor %}
             </div>
-            <div id="post-list">
+            <div id="posts_content" class="tabcontent">
                 {% for post in posts %}
-                {{ post }}<br>
+                    <div class="post-box-post"> 
+                        {{post.user}} {{ post.group}}
+                        <br>
+                        {{post.title}}
+                    </div>
                 {% endfor %}
             </div>
-            <div id="user-list">
-                {% for user in users %}
-                {{ user }}<br>
+            <div id="friends_content" class="tabcontent">
+                {% for friend in friends %}
+                    <div class="post-box-post"> 
+                        {{ friend }}
+                    </div>
                 {% endfor %}
             </div>
+        </div>
     </div>
 {% endblock content %}
