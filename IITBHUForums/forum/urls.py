@@ -5,6 +5,7 @@ from .models import Group
 
 urlpatterns = [
     path('feed/', views.feed, name="feed"),
+    path('search/', views.search, name="search"),
     path('profile/<int:id>/add_friend',views.send_friend_request),
     path('profile/<int:id>/accept_friend',views.accept_friend_request),
     path('profile/<int:id>/decline_friend',views.delete_friend_request),

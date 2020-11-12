@@ -155,7 +155,7 @@ def group_list(request,*args,**kwargs):
     }
     return render(request, 'member.html',  context)
 
-def feed(request):
+def search(request):
     if request.GET:
         query = request.GET.get('q')
         group_list = Group.objects.filter(Q(name__icontains = query))

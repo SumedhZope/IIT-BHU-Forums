@@ -10,6 +10,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
     <script src = {% static 'js/chatroom.js' %}></script>
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        $(document).ready(function(){    
+            $('#chat_nav').attr('src','{% static "img/chat_active.png" %}');
+            $('#group_nav').attr('src','{% static "img/groups.png" %}');
+            $('#home_nav').attr('src','{% static "img/home.png" %}');
+        });
+    </script>
 {% endblock js %}
 {% block content %}
         <div id="{% if id %}preset{% endif %}" class="{{id}} {{username}}"></div>

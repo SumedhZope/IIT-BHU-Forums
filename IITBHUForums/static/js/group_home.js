@@ -7,7 +7,6 @@ $(document).ready(function resize() {
     w2 = $(".uperwalacard").width();
     w3 = w2 - w1 - 30;
     let s = w3.toString() + 'px';
-    console.log(w1, w2, s);
     $('.upper_right').css('width', s);
 });
 
@@ -17,7 +16,6 @@ function liked() {
         let x = $('#no_likes').html();
         let y = parseInt(x) - 1;
         $('#no_likes').html(y);
-        console.log(y);
         $.ajax({
             type: 'POST',
             url: '.',
@@ -32,7 +30,6 @@ function liked() {
         $('#like').attr('src', '/static/img/liked.png');
         let x = $('#no_likes').html();
         let y = parseInt(x) + 1;
-        console.log(y);
         $('#no_likes').html(y);
         $.ajax({
             type: 'POST',

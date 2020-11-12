@@ -28,16 +28,13 @@ Array.from(btn).forEach(element => {
     var socket= new ReconnectingWebSocket(endpoint)
 
     socket.onmessage = function(e){
-        console.log('msg')
         var chatDataMsg = JSON.parse(e.data)
             if(chatDataMsg.message != ''){
-                console.log('process')
                 chatHolder.append("<li>" + chatDataMsg.message + " via - " + chatDataMsg.username +  "</li>")
             }
     }
 
     socket.onopen = function(e){
-        console.log('open')
         element.addEventListener('click', function(event){
             event.preventDefault()
             var msgText = inputElement.value
@@ -73,16 +70,13 @@ function switch_chat(p){
 
 function preset(){
     pre = document.getElementById('preset');
-    console.log(pre);
     if(pre != null){
         document.getElementById(pre.classList[1] + "-name").click();
     }
 }
 
 function setting(){
-    console.log("test2");
     chat_boxes = document.getElementsByClassName('chat-holder');
-    console.log(chat_boxes)
     Array.from(chat_boxes).forEach(e =>{
         e.scrollTop = e.scrollHeight;
     });
