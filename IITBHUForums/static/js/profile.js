@@ -79,7 +79,7 @@ $(document).on('submit','#DeclineFriend', function(e){
     });
 });
 
-const openTab = (e, id_name) => {
+const openTab_2 = (e, id_name) => {
     tabContent = document.getElementsByClassName("tabcontent");
 
     for(i = 0;i<tabContent.length;i++){
@@ -101,4 +101,3 @@ $(document).on('submit','#openChat',function(e){
 })
 
 document.getElementById("defaultOpen").click();
-

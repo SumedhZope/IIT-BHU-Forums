@@ -9,6 +9,7 @@
     }
     
     .create_group {
+        cursor: pointer;
         position: fixed;
         bottom: 0;
         right: 0;
@@ -36,7 +37,15 @@
     </div>
 </div>
 
-{% endfor %} {%endblock content%} {%block js%}
-<script src="{% static 'js/group_landing.js'%}">
-</script>
+{% endfor %} {%endblock content%} 
+{%block js%}
+    <script src="{% static 'js/group_landing.js'%}">
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#group_nav').attr('src','{% static "img/groups_active.png" %}');
+            $('#chat_nav').attr('src','{% static "img/chat.png" %}');
+            $('#home_nav').attr('src','{% static "img/home.png" %}');
+        });
+    </script>
 {%endblock js%}

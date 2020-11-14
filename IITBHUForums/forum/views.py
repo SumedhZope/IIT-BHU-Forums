@@ -167,7 +167,7 @@ def member_list(request,*args,**kwargs):
         r.save()
     return render(request, 'member.html',  context)
 
-def feed(request):
+def search(request):
     if request.GET:
         query = request.GET.get('q')
         group_list = Group.objects.filter(Q(name__icontains = query))
