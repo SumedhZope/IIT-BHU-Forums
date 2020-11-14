@@ -44,3 +44,16 @@ class like(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     def __str__(self):
         return "by {} on {}".format(self.user,self.post)
+
+class Role(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    role = models.CharField(max_length=100)
+    def __str__(self):
+        return f"{self.role} to {self.user.username} in {self.group.name}"
+
+class Role_choices(models.Model) : 
+    group = group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    role = models.CharField(max_length=100)
+    def __str__(self):
+        return f"{self.role} in {self.group.name}"

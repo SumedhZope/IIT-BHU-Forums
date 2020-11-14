@@ -1,0 +1,28 @@
+{% extends "base_navbar.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href={% static 'css/add_role.css' %} />
+{% endblock css %}
+
+{% block js %}
+    <script src="{% static 'js/add_role.js'%}"></script>
+{% endblock js %}
+
+{% block content %}
+    <div class="heading">
+        <h2>Add roles to {{group.name}}</h2>
+    </div>
+    <div class="box">
+        <form id="submit_form">
+            {% csrf_token %}
+            <input class="input" id="input_role"> <br>
+            <button class="btn"> Add </button>
+        </form>
+        <div id="result"></div>
+        <div class="roles">
+            {% for role in existing_role %}
+                {{ role.role }} <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

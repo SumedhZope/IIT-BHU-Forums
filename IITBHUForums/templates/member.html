@@ -1,6 +1,35 @@
 {% extends "base_navbar.html" %}
+{% load static %}
 {% block content %}
-    {% for person in member %}
-        {{ person }}
-    {% endfor %}
+    <h1 class="heading">Members of {{group}}</h1><br>
+    <div class="member-list">
+        {% for person in member %}
+            <div class="members">
+                <div>{{ person.0 }} </div>
+                <div class="change-role pair-1">
+                    {% if person.1 == "Admin" %}
+                        <p> Admin </p>
+                    {% else %}
+                    <form>
+                        {% csrf_token %}
+                        <select id="{{person.2}}_newrole">
+                            {% for role in role_choices %}
+                                <option value="{{role.role}}" {% if person.1 == role.role %} selected {% endif %}>{{role.role}}</option>
+                            {% endfor %}
+                        </select>
+                        <button id="{{person.2}}" class="submit-form-btn">Change</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
+
+{% block css %}
+    <link rel="stylesheet" href = {% static 'css/member.css' %} />
+{% endblock css %}
+
+{% block js %}
+    <script src="{% static 'js/member.js'%}"></script>
+{% endblock js %}

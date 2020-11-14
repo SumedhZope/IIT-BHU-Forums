@@ -14,6 +14,8 @@ urlpatterns = [
     path('groups/new_group/',views.submit_form,name="new_group"),
     path('new_post/', views.make_post),
     path('groups/',views.groups,name = 'groups'),
-    path('group/<int:id>/' ,views.group_home,name='group_home')
+    path('group/<int:id>/' ,views.group_home,name='group_home'),
+    path('group/<int:id>/members', views.member_list, name='member_list'),
+    path('group/<int:id>/add_role', views.add_role, name="add_role")
 ]
 

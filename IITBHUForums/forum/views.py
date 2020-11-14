@@ -6,7 +6,7 @@ from .models import Group,Post,like
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from django.db.models import Q
-from .models import Group,Post,Comments
+from .models import Group,Post,Comments,Role, Role_choices
 import datetime
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
@@ -17,6 +17,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from PIL import Image
 from Auth.models import Profile
+from django.core.exceptions import PermissionDenied
 
 def feed(request):
     user = Profile.objects.get(user=request.user)
@@ -147,12 +148,23 @@ def add_member(request, *args, **kwargs):
     group.members.add(Profile.objects.get(user=request.user))
     return HttpResponse("<h1> Done! <h1>")
 
-def group_list(request,*args,**kwargs):
+def member_list(request,*args,**kwargs):
     group = Group.objects.get(id=kwargs.get('id'))
-    group.members.add(userprofile.objects.get(id=1))
+    member = [[person.user.username, Role.objects.filter(group=group).get(user=person.user).role, person.user.id] for person in group.members.all()]
+    if Role.objects.filter(group=group).get(user=request.user).role == "Admin":
+        isadmin = "True"
+    else:
+        isadmin = "False"
     context = {
-        'member' : group.members.all()
+        'member' : member,
+        'check_admin' : isadmin,
+        'group' : group,
+        'role_choices' : Role_choices.objects.filter(group=group)
     }
+    if request.method == "POST":
+        r = Role.objects.get(user=User.objects.get(id=request.POST.get('user_id')), group=group)
+        r.role = request.POST.get('new_role')
+        r.save()
     return render(request, 'member.html',  context)
 
 def feed(request):
@@ -198,7 +210,7 @@ def submit_form(request):
             data ={
                 'result' : 'error',
                 'target' : 'Group Description',
-                'message' : 'Group discription has a limitation 120 characters',
+                'message' : 'Group description has a limitation 120 characters',
             }
             return JsonResponse(data)
         elif checkextenstion(g_icon.name) and g_icon.name is not None:
@@ -212,6 +224,12 @@ def submit_form(request):
             r = Group(name=name,description=description,groupicon= g_icon,created_at=now, user=request.user,likes=0)
             r.save()
             request.user.profile.group_set.add(r)
+            n = Role(user=request.user, group=r, role="Admin")
+            n.save()
+            n = Role_choices(group=r, role="Admin")
+            n.save()
+            n = Role_choices(group=r, role="Member")
+            n.save()
             data = {
                 'result' : 'success',
             }
@@ -301,6 +319,10 @@ def groups(request):
     params = {
         'group' : group
     }
+    if request.method == "POST":
+        Group.objects.get(id=request.POST.get('group_id')).members.add(request.user.profile)
+        r = Role(user=request.user, group=Group.objects.get(id=request.POST.get('group_id')), role="Member")
+        return render(request,'groups_landing.html',params)    
     return render(request,'groups_landing.html',params)
   
 def group_home(request, id):
@@ -327,3 +349,37 @@ def group_home(request, id):
         'liked' : False,
         }
     return render(request,'group_home.html',params)
+
+def add_role(request, *args, **kwargs):
+    group = Group.objects.get(id=kwargs.get('id'))
+    if Role.objects.filter(group=group).get(user=request.user).role != "Admin" :
+        raise PermissionDenied
+    else:
+        context = {
+            'existing_role' : Role_choices.objects.filter(group=group),
+            'group' : group
+        }
+        if request.method == "POST":
+            role_name = request.POST.get('role').strip()
+            if role_name == '':
+                data = {
+                    'result' : 'error',
+                    'message' : 'Role name not allowed' 
+                }
+                return JsonResponse(data)
+            elif role_name.upper() in [role.role.upper() for role in Role_choices.objects.filter(group=group)]:
+                data = {
+                    'result' : 'error',
+                    'message' : 'Role name already exists' 
+                }
+                return JsonResponse(data)
+            else:
+                r = Role_choices(group=group, role= request.POST.get('role'))
+                r.save()
+                data = {
+                    'result' : 'success',
+                    'message' : 'Role successfully added'
+                }
+                return JsonResponse(data)
+            return render(request, 'add_role.html', context)    
+        return render(request, 'add_role.html', context)

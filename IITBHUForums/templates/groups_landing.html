@@ -32,7 +32,7 @@
     <div class="card-body">
         <h5 class="card-title" onclick="window.location.href = '/group/{{g.id}}';">{{g.name}}</h5>
         <p class="card-text" onclick="window.location.href = '/group/{{g.id}}';">{{g.description}}</p>
-        <a href="#" class="btn btn-primary" style='color: black;background-color: #8EC1BF;'>Join</a>
+        <form>{% csrf_token %}<a id="{{g.id}}" class="btn btn-primary join-btn" style='color: black;background-color: #8EC1BF;'>Join</a></from>
     </div>
 </div>
 

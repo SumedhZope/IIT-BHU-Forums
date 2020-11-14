@@ -1,0 +1,27 @@
+.member-list{
+    width: 50%;
+    margin: auto;
+}
+
+.members{
+    display : inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+}
+
+.submit-form-btn{
+    height: 30px;
+    background-color: #393E46;
+    border-color: #00FFF5;
+    border-radius: 15px;
+}
+
+.submit-form-btn:hover{
+    background-color: #00FFF5;
+    cursor: pointer;
+}
+
+option{
+    background-color: #393E46;
+}
